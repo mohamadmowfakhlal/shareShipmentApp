@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">shareShipment</string>
+    <item name="editTextTextPersonName" type="id" />
+</resources>
