@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUp"></activity>
+        <activity android:name=".AnnounceShipment"></activity>
+        <activity android:name=".mainFunctionaility" />
+        <activity android:name=".Password" />
+        <activity android:name=".ConfirmPersonalInfo" />
+        <activity android:name=".SignUp" />
         <activity
             android:name=".DisplayMessageActivity"
             android:parentActivityName=".MainActivity">
