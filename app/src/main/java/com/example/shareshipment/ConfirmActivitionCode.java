@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class mainFunctionaility extends AppCompatActivity {
+public class ConfirmActivitionCode extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_functionaility);
+        setContentView(R.layout.activity_confirm_activition_code);
     }
-    public void annouceShipment(View view) {
-        Intent intent = new Intent(this,AnnounceShipment.class);
+    public void verify(View view) {
+        Intent intent = new Intent(this, Password.class);
         startActivity(intent);
     }
 }

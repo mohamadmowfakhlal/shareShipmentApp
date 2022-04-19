@@ -14,7 +14,7 @@ public class Password extends AppCompatActivity {
         setContentView(R.layout.activity_password);
     }
     public void confirm(View view) {
-        Intent intent = new Intent(this, mainFunctionaility
+        Intent intent = new Intent(this, MainFunctionality
                 .class);
         startActivity(intent);
     }

@@ -5,14 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -22,46 +14,60 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-public class SignUp extends AppCompatActivity {
-    String serverURL = "http://ec2-3-123-230-170.eu-central-1.compute.amazonaws.com:8080";
-    EditText fullName;
-    EditText phoneNumber;
-    EditText city;
-    EditText postNumber;
-    EditText streetName;
-    EditText houseNumber;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ConfirmRecipentInformation extends AppCompatActivity {
+    JSONObject js;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-    }
-    public void signUp(View view) {
-        RequestQueue queue =  Volley.newRequestQueue(getApplicationContext());
-        fullName =  (EditText) findViewById(R.id.editTextTextPersonName2);
-        phoneNumber = (EditText) findViewById(R.id.phone);
-        city = (EditText) findViewById(R.id.city);
-        postNumber = (EditText) findViewById(R.id.postNumber1);
-        streetName = (EditText) findViewById(R.id.streetName);
-        houseNumber = (EditText) findViewById(R.id.houseNumber);
-        JSONObject js = new JSONObject();
+        // create the get Intent object
+        Intent previousIntent = getIntent();
+        // receive the value by getStringExtra() method
+        // and key must be same which is send by first activity
+       /* String fee = previousIntent.getStringExtra("fee");
+        String shipmentType = previousIntent.getStringExtra("shipmentType");
+        String size = previousIntent.getStringExtra("size");
+        String weight = previousIntent.getStringExtra("weight");
+        String recipientPhoneNumber = previousIntent.getStringExtra("recipientPhoneNumber");
+        String notes = previousIntent.getStringExtra("notes");
+        js = new JSONObject();
         try {
-            String full_Name = fullName.getText().toString();
-            String phone_number = phoneNumber.getText().toString();
-            String city_ = city.getText().toString();
-            String postNumber_ = postNumber.getText().toString();
-            String streetName_ = streetName.getText().toString();
-            String houseNumber_ = houseNumber.getText().toString();
-            js.put("userName", full_Name);
-            js.put("phoneNumber",phone_number);
-            js.put("city",city_);
-            js.put("streetName",streetName_);
-            js.put("houseNumber",houseNumber_);
+            js.put("fee",fee);
+            js.put("shipmentType",shipmentType);
+            js.put("size",size);
+            js.put("weight",weight);
+            js.put("notes",notes);
+            js.put("status","sent");
+            long millis = System.currentTimeMillis();
+            // creating a new object of the class Date
+            java.util.Date date = new java.util.Date(millis);
+            js.put("sentDate",date);
+            JSONObject sender = new JSONObject();
+            sender.put("phoneNumber","33");
+            js.put("sender",sender);
+            JSONObject reciver = new JSONObject();
+            reciver.put("phoneNumber",recipientPhoneNumber);
+            js.put("reciver",reciver);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        */
+        setContentView(R.layout.activity_confirm_recipent_information);
+    }
+
+    public void ChooseRecipient(View view){
+        Intent intent = new Intent(this,CompleteWindow.class);
+        /*RequestQueue queue =  Volley.newRequestQueue(getApplicationContext());
         // Make request for JSONObject
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(
-                Request.Method.POST, serverURL+"/users", js,
+                Request.Method.POST, CommonParams.getServerURL()+"/shipment", js,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -87,9 +93,7 @@ public class SignUp extends AppCompatActivity {
             }
         }) {
 
-            /**
-             * Passing some request headers
-             */
+
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
@@ -99,7 +103,7 @@ public class SignUp extends AppCompatActivity {
 
         };
         queue.add(jsonObjReq);
-        Intent intent = new Intent(this, ConfirmActivitionCode.class);
+        */
         startActivity(intent);
     }
 }

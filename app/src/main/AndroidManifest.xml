@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shareshipment">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AnnounceShipment"></activity>
-        <activity android:name=".mainFunctionaility" />
+        <activity android:name=".CompleteWindow"></activity>
+        <activity android:name=".ConfirmRecipentInformation" />
+        <activity android:name=".Recipent" />
+        <activity android:name=".AnnounceShipment" />
+        <activity android:name=".MainFunctionality" />
         <activity android:name=".Password" />
-        <activity android:name=".ConfirmPersonalInfo" />
+        <activity android:name=".ConfirmActivitionCode" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".DisplayMessageActivity"
