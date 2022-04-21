@@ -22,7 +22,7 @@
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="annouceShipment"
+        android:onClick="announceShipment"
         android:text="announce shipment"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

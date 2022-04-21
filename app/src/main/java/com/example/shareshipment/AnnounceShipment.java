@@ -68,8 +68,6 @@ public class AnnounceShipment extends AppCompatActivity {
 
     public void selectRecipient(View view) throws JSONException {
         JSONObject js = new JSONObject();
-        //js.put ("shipmentType",shipmentType);
-        //js.put("fee",fee.getText().toString());
         Intent intent = new Intent(this,Recipent.class);
         intent.putExtra("shipmentType",shipmentType);
         intent.putExtra("fee",fee.getText().toString());

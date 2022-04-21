@@ -13,7 +13,7 @@ public class MainFunctionality extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_functionaility);
     }
-    public void annouceShipment(View view) {
+    public void announceShipment(View view) {
         Intent intent = new Intent(this,AnnounceShipment.class);
         startActivity(intent);
     }

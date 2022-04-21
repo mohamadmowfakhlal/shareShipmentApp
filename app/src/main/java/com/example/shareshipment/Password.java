@@ -16,6 +16,7 @@ public class Password extends AppCompatActivity {
     public void confirm(View view) {
         Intent intent = new Intent(this, MainFunctionality
                 .class);
+        //Todo Update user table by adding a password and provide activition code Rest API should be made with put
         startActivity(intent);
     }
 }

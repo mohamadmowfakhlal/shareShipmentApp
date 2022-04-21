@@ -10,15 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CompleteWindow"></activity>
-        <activity android:name=".ConfirmRecipentInformation" />
+        <activity android:name=".ConfirmRecipientInformation" />
         <activity android:name=".Recipent" />
         <activity android:name=".AnnounceShipment" />
         <activity android:name=".MainFunctionality" />
         <activity android:name=".Password" />
-        <activity android:name=".ConfirmActivitionCode" />
+        <activity android:name=".ConfirmActivationCode" />
         <activity android:name=".SignUp" />
         <activity
-            android:name=".DisplayMessageActivity"
+            android:name=".WelcomeActivity"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
