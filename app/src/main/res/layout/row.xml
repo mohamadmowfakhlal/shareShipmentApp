@@ -5,25 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="4dp">
+
     <TextView
-        android:id="@+id/serailNumber"
+        android:id="@+id/shipmentId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number"
+        android:text="shipmentId"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp" />
+
     <TextView
-        android:id="@+id/studentName"
+        android:id="@+id/ShipmentType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="ShipmentType"
         android:textColor="#000000"
         android:textSize="16sp" />
+
     <TextView
-        android:id="@+id/mobileNum"
+        android:id="@+id/ShipmentFee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mobile Number"
+        android:text="ShipmentFee"
         android:textColor="@color/colorAccent"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/shipmentSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ShipmentSize"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/shipmentWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ShipmentWeight"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/assign"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
+        android:text="Assign" />
+
 </LinearLayout>
