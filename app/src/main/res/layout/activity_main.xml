@@ -8,28 +8,30 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="72dp"
-        android:layout_height="24dp"
+        android:layout_width="118dp"
+        android:layout_height="37dp"
         android:text="Get Started"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.572"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintVertical_bias="0.55" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
+        android:layout_width="114dp"
+        android:layout_height="51dp"
         android:onClick="sendMessage"
         android:text="Let's go"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.256" />
+        app:layout_constraintVertical_bias="0.34" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -37,10 +39,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248"
+        app:layout_constraintVertical_bias="0.245"
         app:srcCompat="@drawable/postman" />
 
     <TextView

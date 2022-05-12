@@ -4,16 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class AnnounceShipment extends AppCompatActivity {
     Spinner size ;
@@ -26,10 +23,10 @@ public class AnnounceShipment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announce_shipment);
-        size = (Spinner) findViewById(R.id.spinner);
-        weight = (Spinner) findViewById(R.id.spinner2);
-        weightLabel = (TextView) findViewById(R.id.textView14);
-        sizeLabel = (TextView) findViewById(R.id.textView16);
+        size = (Spinner) findViewById(R.id.size);
+        weight = (Spinner) findViewById(R.id.weight);
+        weightLabel = (TextView) findViewById(R.id.weightLabel);
+        sizeLabel = (TextView) findViewById(R.id.sizeLabel);
         fee = (EditText) findViewById(R.id.fee);
         sizeLabel.setVisibility(View.GONE);
         weightLabel.setVisibility(View.GONE);
@@ -68,18 +65,15 @@ public class AnnounceShipment extends AppCompatActivity {
 
     public void selectRecipient(View view) throws JSONException {
         String weightValue = null;
-        if(weight.getVisibility()!= View.GONE)
-            //js.put("weight", weight.getSelectedItem().toString());
-            weightValue= weight.getSelectedItem().toString();
         String sizeValue = null;
+
+        if(weight.getVisibility()!= View.GONE)
+            weightValue= weight.getSelectedItem().toString();
         if(size.getVisibility() != View.GONE)
-            //js.put("size", size.getSelectedItem().toString());
             sizeValue = size.getSelectedItem().toString();
+
         Shipment shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue);
         Intent intent = new Intent(this,Recipent.class);
-       //intent.putExtra("shipmentType",shipmentType);
-        //intent.putExtra("fee",fee.getText().toString());
-
         intent.putExtra("shipment", shipment);
         startActivity(intent);
     }

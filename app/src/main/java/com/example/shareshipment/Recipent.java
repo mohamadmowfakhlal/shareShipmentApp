@@ -45,21 +45,6 @@ public class Recipent extends AppCompatActivity {
         // create the get Intent object
         Shipment shipment = getIntent().getParcelableExtra("shipment");
         intent.putExtra("shipment", shipment);
-
-        // receive the value by getStringExtra() method
-        // and key must be same which is send by first activity
-        /*
-        Integer fee = shipment.getFee();
-        String shipmentType = shipment.getShipmentType();
-        String size = shipment.getSize();
-        String weight = shipment.getWeight();
-        intent.putExtra("shipmentType",shipmentType);
-        intent.putExtra("fee",fee);
-        intent.putExtra("size",size);
-        intent.putExtra("weight",weight);
-
-         */
-        //New fields added on this activity
         intent.putExtra("recipientPhoneNumber",recipientPhoneNumber.getText().toString());
         intent.putExtra("notes",notes.getText().toString());
         startActivity(intent);

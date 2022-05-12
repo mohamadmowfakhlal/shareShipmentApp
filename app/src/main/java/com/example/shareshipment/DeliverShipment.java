@@ -44,8 +44,8 @@ public class DeliverShipment extends AppCompatActivity {
         //ToDo API get shipment for source and destination city
         // call a rest api to get a userName that belong to given phone number
         destinationCity = (EditText) findViewById(R.id.destinationCity);
-
-        String resource = "/shipments/pickup/?sourceCity=1&destinationCity="+destinationCity.getText().toString();
+        // source city is taken from login
+        String resource = "/shipments/pickup/?sourceCity=aarhus&destinationCity="+destinationCity.getText().toString();
         jsonRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext());
 
     }

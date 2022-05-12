@@ -27,7 +27,6 @@ public class AvailableShipments extends AppCompatActivity {
 
         try {
             JSONArray array = new JSONArray(jsonArray);
-            //JSONArray jArray = (JSONArray)jsonObject;
             if (array != null) {
                 for (int i=0;i<array.length();i++){
                     arrayList.add((JSONObject) array.getJSONObject(i));
@@ -41,16 +40,6 @@ public class AvailableShipments extends AppCompatActivity {
 
         adapter = new MyAdapter(this, arrayList);
         listView.setAdapter(adapter);
-       /*
-        l = findViewById(R.id.list);
-        ArrayAdapter<String> arr;
-        arr = new ArrayAdapter<String>(
-                this,
-                R.layout.support_simple_spinner_dropdown_item,
-                tutorials);
-        l.setAdapter(arr);
-
-        */
     }
 
 
