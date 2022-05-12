@@ -17,4 +17,9 @@ public class MainFunctionality extends AppCompatActivity {
         Intent intent = new Intent(this,AnnounceShipment.class);
         startActivity(intent);
     }
+
+    public void deliverShipmentForOther(View view){
+        Intent intent = new Intent(this,DeliverShipment.class);
+        startActivity(intent);
+    }
 }

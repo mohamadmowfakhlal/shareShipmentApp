@@ -39,15 +39,14 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         Intent previousIntent = getIntent();
         // receive the value by getStringExtra() method
         // and key must be same which is send by first activity
-        String fee = previousIntent.getStringExtra("fee");
-        String shipmentType = previousIntent.getStringExtra("shipmentType");
-        String size = previousIntent.getStringExtra("size");
-        String weight = previousIntent.getStringExtra("weight");
+        Shipment shipment = getIntent().getParcelableExtra("shipment");
+        Integer fee = shipment.getFee();
+        String shipmentType = shipment.getShipmentType();
+        String size = shipment.getSize();
+        String weight = shipment.getWeight();
         String recipientPhoneNumber = previousIntent.getStringExtra("recipientPhoneNumber");
         //recipientName is from users table need an api call maybe in previous activity and pass it
         //recipientNameTextView.setText(recipientName);
@@ -64,7 +63,7 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
             Date date = new Date();
             js.put("sentDate",formatter.format(date));
             JSONObject sender = new JSONObject();
-            sender.put("phoneNumber","33");
+            sender.put("phoneNumber","1");
             js.put("sender",sender);
             JSONObject receiver = new JSONObject();
             receiver.put("phoneNumber",recipientPhoneNumber);
@@ -78,14 +77,12 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
         recipientPhoneNumberTextView.setText(recipientPhoneNumber);
         recipientNameTextView =  (TextView) findViewById(R.id.receipentName);
         // call a rest api to get a userName that belong to given phone number
-        JSONObject js = new JSONObject();
-        jsonRequest(js,"/users/phone/"+recipientPhoneNumber, Request.Method.GET,getApplicationContext());
+        jsonRequest(new JSONObject(),"/users/"+recipientPhoneNumber, Request.Method.GET,getApplicationContext());
     }
 
     public void ChooseRecipient(View view){
         Intent intent = new Intent(this,CompleteWindow.class);
         String resource = "/shipments";
-
         CommonParams.jsonRequest(js,resource,Request.Method.POST,getApplicationContext());
         startActivity(intent);
     }

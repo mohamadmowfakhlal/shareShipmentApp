@@ -18,4 +18,10 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SignUp.class);
         startActivity(intent);
     }
+
+    public void signIn(View view){
+        //ToDo API verification for phone number and password
+        Intent intent = new Intent(this, MainFunctionality.class);
+        startActivity(intent);
+    }
 }

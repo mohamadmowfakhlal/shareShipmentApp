@@ -34,7 +34,7 @@ public class SignUp extends AppCompatActivity {
         postNumber = (EditText) findViewById(R.id.postNumber1);
         streetName = (EditText) findViewById(R.id.streetName);
         houseNumber = (EditText) findViewById(R.id.houseNumber);
-        JSONObject js = new JSONObject();
+        JSONObject user = new JSONObject();
         JSONObject address = new JSONObject();
 
         try {
@@ -44,18 +44,18 @@ public class SignUp extends AppCompatActivity {
             String postNumber_ = postNumber.getText().toString();
             String streetName_ = streetName.getText().toString();
             String houseNumber_ = houseNumber.getText().toString();
-            js.put("userName", full_Name);
-            js.put("phoneNumber",phone_number);
+            user.put("userName", full_Name);
+            user.put("phoneNumber",phone_number);
             address.put("city",city_);
             address.put("streetName",streetName_);
             address.put("houseNumber",houseNumber_);
             address.put("postNumber",postNumber_);
-            js.put("address",address);
+            user.put("address",address);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         String resource = "/users";
-        CommonParams.jsonRequest(js,resource,Request.Method.POST,getApplicationContext());
+        CommonParams.jsonRequest(user,resource,Request.Method.POST,getApplicationContext());
         Intent intent = new Intent(this, ConfirmActivationCode.class);
         startActivity(intent);
     }

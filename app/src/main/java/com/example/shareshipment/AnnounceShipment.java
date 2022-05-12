@@ -67,17 +67,20 @@ public class AnnounceShipment extends AppCompatActivity {
     }
 
     public void selectRecipient(View view) throws JSONException {
-        JSONObject js = new JSONObject();
-        Intent intent = new Intent(this,Recipent.class);
-        intent.putExtra("shipmentType",shipmentType);
-        intent.putExtra("fee",fee.getText().toString());
+        String weightValue = null;
         if(weight.getVisibility()!= View.GONE)
             //js.put("weight", weight.getSelectedItem().toString());
-            intent.putExtra("weight", weight.getSelectedItem().toString());
+            weightValue= weight.getSelectedItem().toString();
+        String sizeValue = null;
         if(size.getVisibility() != View.GONE)
             //js.put("size", size.getSelectedItem().toString());
-            intent.putExtra("size", size.getSelectedItem().toString());
-        //intent.putExtra("shipment", (Parcelable) js);
+            sizeValue = size.getSelectedItem().toString();
+        Shipment shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue);
+        Intent intent = new Intent(this,Recipent.class);
+       //intent.putExtra("shipmentType",shipmentType);
+        //intent.putExtra("fee",fee.getText().toString());
+
+        intent.putExtra("shipment", shipment);
         startActivity(intent);
     }
 

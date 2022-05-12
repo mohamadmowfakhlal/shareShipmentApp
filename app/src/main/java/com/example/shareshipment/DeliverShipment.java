@@ -1,72 +1,75 @@
-/*
- * Copyright (C) 2013 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.shareshipment;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
-/**
- * This class includes a small subset of standard GATT attributes for demonstration purposes.
- */
-public class CommonParams {
-
-    public static String getServerURL() {
-        return serverURL;
+public class DeliverShipment extends AppCompatActivity {
+    EditText destinationCity;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_deliver_shipment);
     }
 
-    private static String serverURL = "http://3.73.174.22:8080";
+    public void findShipment(View view){
+        //ToDo API get shipment for source and destination city
+        // call a rest api to get a userName that belong to given phone number
+        destinationCity = (EditText) findViewById(R.id.destinationCity);
 
-    public  static  void jsonRequest(JSONObject js, final String resource, int method, final Context context){
+        String resource = "/shipments/pickup/?sourceCity=1&destinationCity="+destinationCity.getText().toString();
+        jsonRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext());
+
+    }
+
+    public void jsonRequest(JSONArray js, final String resource, int method, final Context context){
         RequestQueue queue =  Volley.newRequestQueue(context);
+        Intent intent;
 
         // Make request for JSONObject
 
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, CommonParams.getServerURL()+resource, js,new Response.Listener<JSONObject>() {
-                    Toast myToast;
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                                if(response==null) {
-                                    myToast = Toast.makeText(context,"failed  !", Toast.LENGTH_SHORT);
-                                    myToast.show();
-                                }
-                    }
-                    }, new Response.ErrorListener() {
+        JsonArrayRequest jsonObjReq = new JsonArrayRequest(method, CommonParams.getServerURL()+resource, js,new Response.Listener<JSONArray>() {
+            //Toast myToast;
+            @Override
+            public void onResponse(JSONArray  response) {
+                System.out.println("null");
+                //intent.putExtra("userName",response.get("userName"));
+                if(response!=null) {
+                    System.out.println("Test");
+                    Intent intent = new Intent(getApplicationContext(), AvailableShipments.class);
+                    intent.putExtra("shipments",response.toString());
+                    startActivity(intent);
+                }
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.println("error"+error);
@@ -94,10 +97,7 @@ public class CommonParams {
                 headers.put("Content-Type", "application/json; charset=utf-8");
                 return headers;
             }
-
-        };
+          };
         queue.add(jsonObjReq);
     }
-
-
 }

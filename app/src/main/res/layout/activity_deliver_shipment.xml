@@ -4,56 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WelcomeActivity">
+    tools:context=".DeliverShipment">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162"
+        app:layout_constraintVertical_bias="0.196"
         app:srcCompat="@drawable/postman" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textSize="24sp"
+        android:text="Enter Destination City"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.353" />
+        app:layout_constraintVertical_bias="0.393" />
 
-    <Button
-        android:id="@+id/button2"
+    <EditText
+        android:id="@+id/destinationCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="signIn"
-        android:text="Sign In"
+        android:ems="10"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.292" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="91dp"
-        android:layout_height="40dp"
-        android:onClick="signUp"
-        android:text="Sign up"
+        android:id="@+id/findShipments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="findShipment"
+        android:text="findShipments"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.667" />
 </androidx.constraintlayout.widget.ConstraintLayout>
