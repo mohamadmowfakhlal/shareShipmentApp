@@ -61,8 +61,6 @@ public class MyAdapter extends BaseAdapter {
          public void onClick(View v) {
             Intent intent = new Intent(context, MainFunctionality.class);
             JSONObject js = new JSONObject();
-
-
             try {
                js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
                js.put("status","assigned");
@@ -84,7 +82,6 @@ public class MyAdapter extends BaseAdapter {
          shipmentSize.setText(arrayList.get(position).getString("size"));
       if(arrayList.get(position).getString("weight") != null)
          shipmentWeight.setText(arrayList.get(position).getString("weight"));
-
       } catch (JSONException e) {
          e.printStackTrace();
       }
