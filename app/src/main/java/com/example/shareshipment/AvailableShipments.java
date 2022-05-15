@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 public class AvailableShipments extends AppCompatActivity {
 
     ListView listView;
-    MyAdapter adapter;
+    AvailableShipmentAdapter adapter;
     ArrayList<JSONObject> shipments = new ArrayList<>();
 
     @Override
@@ -38,7 +37,7 @@ public class AvailableShipments extends AppCompatActivity {
             e.printStackTrace();
         }
         listView = findViewById(R.id.list);
-        adapter = new MyAdapter(this, shipments,listView);
+        adapter = new AvailableShipmentAdapter(this, shipments,listView);
         listView.setAdapter(adapter);
     }
 }

@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 
@@ -17,7 +16,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-public class AvailableShipmentAdapter extends BaseAdapter {
+
+public class AssignedShipmentAdapter extends BaseAdapter {
    private Context context;
    private ArrayList<JSONObject> arrayList;
    private TextView shipmentId,shipmentIdLabel,
@@ -26,7 +26,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
            shipmentSize, shipmentSizeLabel,
            shipmentWeight, shipmentWeightLabel;
    private Button assign;
-   public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView) {
+   public AssignedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView) {
       this.context = context;
       this.arrayList = arrayList;
    }
@@ -44,7 +44,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
    }
    @Override
    public View getView(final int position, View convertView, ViewGroup parent) {
-      convertView = LayoutInflater.from(context).inflate(R.layout.row, parent, false);
+      convertView = LayoutInflater.from(context).inflate(R.layout.rowassigned, parent, false);
       shipmentId = convertView.findViewById(R.id.shipmentId);
       shipmentIdLabel = convertView.findViewById(R.id.shipmentIdLabel);
       shipmentType = convertView.findViewById(R.id.ShipmentType);
@@ -63,7 +63,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
             JSONObject js = new JSONObject();
             try {
                js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
-               js.put("status","assigned");
+               js.put("status","delivered");
                JSONObject deliveryMan = new JSONObject();
                deliveryMan.put("phoneNumber","004542332945");
                js.put("deliveryMan",deliveryMan);

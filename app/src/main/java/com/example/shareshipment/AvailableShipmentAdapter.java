@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-public class MyAdapter extends BaseAdapter {
+public class AvailableShipmentAdapter extends BaseAdapter {
    private Context context;
    private ArrayList<JSONObject> arrayList;
    private TextView shipmentId,shipmentIdLabel,
@@ -26,7 +26,7 @@ public class MyAdapter extends BaseAdapter {
            shipmentSize, shipmentSizeLabel,
            shipmentWeight, shipmentWeightLabel;
    private Button assign;
-   public MyAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView) {
+   public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView) {
       this.context = context;
       this.arrayList = arrayList;
    }

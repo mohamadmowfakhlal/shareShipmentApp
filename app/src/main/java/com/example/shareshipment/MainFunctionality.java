@@ -39,10 +39,10 @@ public class MainFunctionality extends AppCompatActivity {
         startActivity(intent);
     }
     public void assignShipment(View view) {
-
         String resource = "/shipments/deliveryMan/?status=assigned&deliveryManPhoneNumber=004542332945";
         jsonRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext());
     }
+
     public void deliverShipmentForOther(View view){
         Intent intent = new Intent(this,DeliverShipment.class);
         startActivity(intent);
