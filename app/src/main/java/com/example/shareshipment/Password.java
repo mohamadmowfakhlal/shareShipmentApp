@@ -2,7 +2,6 @@ package com.example.shareshipment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -20,16 +19,14 @@ public class Password extends AppCompatActivity {
         setContentView(R.layout.activity_password);
     }
     public void confirm(View view) throws JSONException {
-        Intent intent = new Intent(this, MainFunctionality
-                .class);
-        startActivity(intent);
         password = findViewById(R.id.editTextTextPassword);
         String pass = password.getText().toString();
         JSONObject js = new JSONObject();
+        //phoneNumber should be taken from sign up information
         js.put("phoneNumber","004542332945");
         js.put("active","true");
         js.put("password",pass);
         String resource = "/users/";
-        CommonParams.jsonRequest(js,resource, Request.Method.PUT,getApplicationContext());
+        CommonParams.JSONRequestWithoutResponse(js,resource, Request.Method.PUT,getApplicationContext(),MainFunctionality.class);
     }
 }

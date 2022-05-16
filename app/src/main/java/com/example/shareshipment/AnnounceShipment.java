@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.json.JSONException;
-
 public class AnnounceShipment extends AppCompatActivity {
     Spinner size ;
     Spinner weight ;
@@ -63,7 +61,7 @@ public class AnnounceShipment extends AppCompatActivity {
         shipmentType = "luggage";
     }
 
-    public void selectRecipient(View view) throws JSONException {
+    public void selectRecipient(View view)  {
         String weightValue = null;
         String sizeValue = null;
 
@@ -73,7 +71,7 @@ public class AnnounceShipment extends AppCompatActivity {
             sizeValue = size.getSelectedItem().toString();
 
         Shipment shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue);
-        Intent intent = new Intent(this,Recipent.class);
+        Intent intent = new Intent(this, Recipient.class);
         intent.putExtra("shipment", shipment);
         startActivity(intent);
     }

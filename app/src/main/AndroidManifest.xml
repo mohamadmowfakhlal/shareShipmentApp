@@ -16,7 +16,7 @@
         <activity android:name=".DeliverShipment" />
         <activity android:name=".CompleteWindow" />
         <activity android:name=".ConfirmRecipientInformation" />
-        <activity android:name=".Recipent" />
+        <activity android:name=".Recipient" />
         <activity android:name=".AnnounceShipment" />
         <activity android:name=".MainFunctionality" />
         <activity android:name=".Password" />
