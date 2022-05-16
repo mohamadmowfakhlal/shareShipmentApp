@@ -16,6 +16,7 @@
 
 package com.example.shareshipment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -57,19 +58,24 @@ public class CommonParams {
 
     private static String serverURL = "http://3.73.174.22:8080";
 
-    public  static  void jsonRequest(JSONObject js, final String resource, int method, final Context context){
+    public  static  void jsonRequest(JSONObject js, final String resource, int method, final Context context,final Class className){
         RequestQueue queue =  Volley.newRequestQueue(context);
-
-        // Make request for JSONObject
-
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, CommonParams.getServerURL()+resource, js,new Response.Listener<JSONObject>() {
                     Toast myToast;
                     @Override
                     public void onResponse(JSONObject response) {
-
                                 if(response==null) {
                                     myToast = Toast.makeText(context,"failed  !", Toast.LENGTH_SHORT);
                                     myToast.show();
+                                }else {
+                                   // ((MyApplication) Activity.getApplication()).setCity();
+                                    Intent intent = new Intent(context, className);
+                                    try {
+                                        intent.putExtra("city",response.getJSONObject("address").getString("city"));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    context.startActivity(intent);
                                 }
                     }
                     }, new Response.ErrorListener() {
@@ -100,7 +106,32 @@ public class CommonParams {
                 headers.put("Content-Type", "application/json; charset=utf-8");
                 return headers;
             }
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
 
+
+                try {
+                    String json = new String(
+                            response.data,
+                            "UTF-8"
+                    );
+
+                    if (json.length() == 0) {
+                        return Response.success(
+                                null,
+                                HttpHeaderParser.parseCacheHeaders(response)
+                        );
+                    }
+                    else {
+                        return super.parseNetworkResponse(response);
+                    }
+                }
+                catch (UnsupportedEncodingException e) {
+                    return Response.error(new ParseError(e));
+                }
+
+
+            }
         };
         queue.add(jsonObjReq);
     }
@@ -236,18 +267,8 @@ public class CommonParams {
                 //intent.putExtra("userName",response.get("userName"));
 
                 if(response!=null) {
-                    try {
-                        if(response.get("userName") != null){
-                            //recipientNameTextView.setText(response.getString("userName"));
-                            Intent intent = new Intent(context,CompleteWindow);
-                            context.startActivity(intent);
-                        }else{
-                            //myToast = Toast.makeText(context,"failed  !", Toast.LENGTH_SHORT);
-                            //myToast.show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                  Intent intent = new Intent(context,CompleteWindow);
+                  context.startActivity(intent);
                 }
             }
         }, new Response.ErrorListener() {
@@ -335,7 +356,7 @@ public class CommonParams {
     }
 
 
-    public  static  void jsonRequestBoolean(JSONObject js, final String resource, int method, final Context context){
+    public  static  void jsonRequestBoolean(JSONObject js, final String resource, int method, final Context context,final Class MainFunctionality){
         RequestQueue queue =  Volley.newRequestQueue(context);
         BooleanRequest jsonObjReq = new BooleanRequest(method, CommonParams.getServerURL()+resource, js.toString(),new Response.Listener<Boolean>() {
             Toast myToast;
@@ -345,7 +366,7 @@ public class CommonParams {
                     myToast = Toast.makeText(context,"wrong username or password  !", Toast.LENGTH_SHORT);
                     myToast.show();
                 }else{
-                    Intent intent = new Intent(context, MainFunctionality.class);
+                    Intent intent = new Intent(context, MainFunctionality);
                     context.startActivity(intent);
                 }
             }

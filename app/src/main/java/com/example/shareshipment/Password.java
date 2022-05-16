@@ -23,7 +23,8 @@ public class Password extends AppCompatActivity {
         String pass = password.getText().toString();
         JSONObject js = new JSONObject();
         //phoneNumber should be taken from sign up information
-        js.put("phoneNumber","004542332945");
+        String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
+        js.put("phoneNumber",phoneNumber);
         js.put("active","true");
         js.put("password",pass);
         String resource = "/users/";

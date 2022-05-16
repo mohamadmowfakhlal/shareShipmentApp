@@ -41,6 +41,10 @@ public class SignUp extends AppCompatActivity {
             String full_Name = fullName.getText().toString();
             String phone_number = phoneNumber.getText().toString();
             String city_ = city.getText().toString();
+            ((MyApplication) this.getApplication()).setCity(city_);
+            ((MyApplication) this.getApplication()).setFullName(full_Name);
+            ((MyApplication) this.getApplication()).setPhoneNumber(phone_number);
+
             String postNumber_ = postNumber.getText().toString();
             String streetName_ = streetName.getText().toString();
             String houseNumber_ = houseNumber.getText().toString();
@@ -55,9 +59,8 @@ public class SignUp extends AppCompatActivity {
             e.printStackTrace();
         }
         String resource = "/users";
-        CommonParams.jsonRequest(user,resource,Request.Method.POST,getApplicationContext());
-        Intent intent = new Intent(this, ConfirmActivationCode.class);
-        startActivity(intent);
+        CommonParams.JSONRequestWithoutResponse(user,resource,Request.Method.POST,getApplicationContext(),ConfirmActivationCode.class);
+
     }
 
 

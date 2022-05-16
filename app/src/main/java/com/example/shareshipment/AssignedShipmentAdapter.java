@@ -20,15 +20,17 @@ import java.util.ArrayList;
 public class AssignedShipmentAdapter extends BaseAdapter {
    private Context context;
    private ArrayList<JSONObject> arrayList;
+   private String deliveryManPhoneNumber;
    private TextView shipmentId,shipmentIdLabel,
            shipmentType,shipmentTypeLabel,
            shipmentFee, shipmentFeeLabel,
            shipmentSize, shipmentSizeLabel,
            shipmentWeight, shipmentWeightLabel;
    private Button assign;
-   public AssignedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView) {
+   public AssignedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
       this.context = context;
       this.arrayList = arrayList;
+      this.deliveryManPhoneNumber = deliveryMan;
    }
    @Override
    public int getCount() {
@@ -65,12 +67,12 @@ public class AssignedShipmentAdapter extends BaseAdapter {
                js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
                js.put("status","delivered");
                JSONObject deliveryMan = new JSONObject();
-               deliveryMan.put("phoneNumber","004542332945");
+               deliveryMan.put("phoneNumber",deliveryManPhoneNumber);
                js.put("deliveryMan",deliveryMan);
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.jsonRequest(js,"/shipments/deliveryMan", Request.Method.PUT,context);
+            CommonParams.JSONRequestWithoutResponse(js,"/shipments/deliveryMan", Request.Method.PUT,context,MainFunctionality.class);
             context.startActivity(intent);
          }
       });

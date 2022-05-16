@@ -47,8 +47,9 @@ public class SignIn extends AppCompatActivity {
         js.put("phoneNumber",phoneNumber.getText().toString());
         js.put("password",password.getText().toString());
         String resource = "/users/login";
-        CommonParams.jsonRequestBoolean(js,resource, Request.Method.POST,getApplicationContext());
+        CommonParams.jsonRequest(js,resource, Request.Method.POST,getApplicationContext(),MainFunctionality.class);
+        ((MyApplication) this.getApplication()).setPhoneNumber(phoneNumber.getText().toString());
+        //todo the same for city
+        //CommonParams.jsonRequestBoolean(js,resource, Request.Method.POST,getApplicationContext(),MainFunctionality.class);
     }
-
-
 }

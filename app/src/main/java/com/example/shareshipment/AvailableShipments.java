@@ -37,7 +37,7 @@ public class AvailableShipments extends AppCompatActivity {
             e.printStackTrace();
         }
         listView = findViewById(R.id.list);
-        adapter = new AvailableShipmentAdapter(this, shipments,listView);
+        adapter = new AvailableShipmentAdapter(this, shipments,listView,((MyApplication) this.getApplication()).getPhoneNumber());
         listView.setAdapter(adapter);
     }
 }

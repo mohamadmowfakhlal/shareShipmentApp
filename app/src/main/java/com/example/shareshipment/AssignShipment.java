@@ -36,7 +36,7 @@ public class AssignShipment extends AppCompatActivity {
             e.printStackTrace();
         }
         listView = findViewById(R.id.list);
-        adapter = new AssignedShipmentAdapter(this, shipments,listView);
+        adapter = new AssignedShipmentAdapter(this, shipments,listView, ((MyApplication) this.getApplication()).getPhoneNumber());
         listView.setAdapter(adapter);
     }
 }

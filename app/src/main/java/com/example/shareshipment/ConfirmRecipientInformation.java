@@ -48,7 +48,8 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
             js.put("sentDate",formatter.format(date));
             JSONObject sender = new JSONObject();
             //sender phone number is taken from login
-            sender.put("phoneNumber","004542332945");
+            String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
+            sender.put("phoneNumber",phoneNumber);
             js.put("sender",sender);
             JSONObject receiver = new JSONObject();
             receiver.put("phoneNumber",recipientPhoneNumber);

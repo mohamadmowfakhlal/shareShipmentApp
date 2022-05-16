@@ -21,7 +21,9 @@ public class DeliverShipment extends AppCompatActivity {
         //ToDo the source city should be taken from login session
         destinationCity = (EditText) findViewById(R.id.destinationCity);
         // source city is taken from login
-        String resource = "/shipments/pickup/?sourceCity=aarhus&destinationCity="+destinationCity.getText().toString();
+        String sourcecity = ((MyApplication) this.getApplication()).getCity();
+
+        String resource = "/shipments/pickup/?sourceCity="+ sourcecity + "&destinationCity="+destinationCity.getText().toString();
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AvailableShipments.class);
     }
 

@@ -33,13 +33,16 @@ public class MainFunctionality extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_functionaility);
+        if(getIntent().getStringExtra("city")!=null)
+            ((MyApplication) this.getApplication()).setCity(getIntent().getStringExtra("city"));
     }
     public void announceShipment(View view) {
         Intent intent = new Intent(this,AnnounceShipment.class);
         startActivity(intent);
     }
     public void assignShipment(View view) {
-        String resource = "/shipments/deliveryMan/?status=assigned&deliveryManPhoneNumber=004542332945";
+        String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
+        String resource = "/shipments/deliveryMan/?status=assigned&deliveryManPhoneNumber="+phoneNumber;
         CommonParams.jsonRequestArray(new JSONArray(),resource, Request.Method.GET,getApplicationContext());
     }
 
