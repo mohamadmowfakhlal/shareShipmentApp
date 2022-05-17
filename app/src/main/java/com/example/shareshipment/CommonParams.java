@@ -154,6 +154,9 @@ public class CommonParams {
 
                 if (error instanceof NetworkError) {
                 } else if (error instanceof ServerError) {
+                    Toast.makeText(context,
+                            "The user has already registered!",
+                            Toast.LENGTH_LONG).show();
                 } else if (error instanceof AuthFailureError) {
                 } else if (error instanceof ParseError) {
                 } else if (error instanceof NoConnectionError) {
@@ -251,6 +254,7 @@ public class CommonParams {
         };
         queue.add(jsonObjReq);
     }
+
     public static void jsonRequestForRecipientAssurance(JSONObject js, final String resource, int method, final Context context, final Class ConfirmRecipientInformation, final Shipment shipment,final String recipientPhoneNumber,final String notes){
         RequestQueue queue =  Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, CommonParams.getServerURL()+resource, js,new Response.Listener<JSONObject>() {
@@ -278,6 +282,9 @@ public class CommonParams {
 
                 if (error instanceof NetworkError) {
                 } else if (error instanceof ServerError) {
+                    Toast.makeText(context,
+                            "The receiver is not a member of the system",
+                            Toast.LENGTH_LONG).show();
                 } else if (error instanceof AuthFailureError) {
                 } else if (error instanceof ParseError) {
                 } else if (error instanceof NoConnectionError) {
