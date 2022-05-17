@@ -14,13 +14,11 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
     }
     public void signUp(View view) {
-        //ToDo call to rest api to send a sms to verify the phone number is a correct one
         Intent intent = new Intent(this, SignUp.class);
         startActivity(intent);
     }
 
     public void signIn(View view){
-        //ToDo API verification for phone number and password
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
     }

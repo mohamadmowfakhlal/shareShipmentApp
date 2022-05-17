@@ -11,7 +11,7 @@ import com.android.volley.Request;
 
 import org.json.JSONObject;
 
-public class ConfirmActivationCode extends AppCompatActivity {
+public class ActivationCode extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

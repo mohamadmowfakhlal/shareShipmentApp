@@ -25,7 +25,7 @@
         android:id="@+id/button"
         android:layout_width="114dp"
         android:layout_height="51dp"
-        android:onClick="sendMessage"
+        android:onClick="startApplication"
         android:text="Let's go"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

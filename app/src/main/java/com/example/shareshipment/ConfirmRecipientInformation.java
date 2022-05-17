@@ -24,16 +24,12 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent previousIntent = getIntent();
-        // receive the value by getStringExtra() method
-        // and key must be same which is send by first activity
         Shipment shipment = getIntent().getParcelableExtra("shipment");
         Integer fee = shipment.getFee();
         String shipmentType = shipment.getShipmentType();
         String size = shipment.getSize();
         String weight = shipment.getWeight();
         String recipientPhoneNumber = previousIntent.getStringExtra("recipientPhoneNumber");
-        //recipientName is from users table need an api call maybe in previous activity and pass it
-        //recipientNameTextView.setText(recipientName);
         String notes = previousIntent.getStringExtra("notes");
         js = new JSONObject();
         try {
@@ -59,9 +55,9 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
         }
         setContentView(R.layout.activity_confirm_recipent_information);
         // create the get Intent object
-        recipientPhoneNumberTextView =  (TextView) findViewById(R.id.phoneNumber);
+        recipientPhoneNumberTextView =  findViewById(R.id.phoneNumber);
         recipientPhoneNumberTextView.setText(recipientPhoneNumber);
-        recipientNameTextView =  (TextView) findViewById(R.id.receipentName);
+        recipientNameTextView =   findViewById(R.id.receipentName);
         recipientNameTextView.setText(previousIntent.getStringExtra("recipientName"));
         // call a rest api to get a userName that belong to given phone number
     }

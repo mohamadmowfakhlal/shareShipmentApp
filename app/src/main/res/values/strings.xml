@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">shareShipment</string>
+    <string name="app_name">quickPost</string>
     <item name="editTextTextPersonName" type="id" />
     <string-array name="size_array">
         <item>Small</item>

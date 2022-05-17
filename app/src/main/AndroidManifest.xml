@@ -17,11 +17,11 @@
         <activity android:name=".DeliverShipment" />
         <activity android:name=".CompleteWindow" />
         <activity android:name=".ConfirmRecipientInformation" />
-        <activity android:name=".Recipient" />
+        <activity android:name=".ChooseRecipient" />
         <activity android:name=".AnnounceShipment" />
         <activity android:name=".MainFunctionality" />
         <activity android:name=".Password" />
-        <activity android:name=".ConfirmActivationCode" />
+        <activity android:name=".ActivationCode" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".WelcomeActivity"

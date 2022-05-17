@@ -43,7 +43,7 @@ public class MainFunctionality extends AppCompatActivity {
     public void assignShipment(View view) {
         String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
         String resource = "/shipments/deliveryMan/?status=assigned&deliveryManPhoneNumber="+phoneNumber;
-        CommonParams.jsonRequestArray(new JSONArray(),resource, Request.Method.GET,getApplicationContext());
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AssignShipment.class);
     }
 
     public void deliverShipmentForOther(View view){

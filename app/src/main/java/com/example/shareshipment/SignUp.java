@@ -2,12 +2,9 @@ package com.example.shareshipment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,12 +25,12 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
     }
     public void signUp(View view) {
-        fullName =  (EditText) findViewById(R.id.editTextTextPersonName2);
-        phoneNumber = (EditText) findViewById(R.id.phone);
-        city = (EditText) findViewById(R.id.city);
-        postNumber = (EditText) findViewById(R.id.postNumber1);
-        streetName = (EditText) findViewById(R.id.streetName);
-        houseNumber = (EditText) findViewById(R.id.houseNumber);
+        fullName =  findViewById(R.id.fullName);
+        phoneNumber =  findViewById(R.id.phone);
+        city =  findViewById(R.id.city);
+        postNumber =  findViewById(R.id.postNumber1);
+        streetName = findViewById(R.id.streetName);
+        houseNumber =  findViewById(R.id.houseNumber);
         JSONObject user = new JSONObject();
         JSONObject address = new JSONObject();
 
@@ -44,7 +41,6 @@ public class SignUp extends AppCompatActivity {
             ((MyApplication) this.getApplication()).setCity(city_);
             ((MyApplication) this.getApplication()).setFullName(full_Name);
             ((MyApplication) this.getApplication()).setPhoneNumber(phone_number);
-
             String postNumber_ = postNumber.getText().toString();
             String streetName_ = streetName.getText().toString();
             String houseNumber_ = houseNumber.getText().toString();
@@ -59,7 +55,7 @@ public class SignUp extends AppCompatActivity {
             e.printStackTrace();
         }
         String resource = "/users";
-        CommonParams.JSONRequestWithoutResponse(user,resource,Request.Method.POST,getApplicationContext(),ConfirmActivationCode.class);
+        CommonParams.JSONRequestWithoutResponse(user,resource,Request.Method.POST,getApplicationContext(), ActivationCode.class);
 
     }
 
