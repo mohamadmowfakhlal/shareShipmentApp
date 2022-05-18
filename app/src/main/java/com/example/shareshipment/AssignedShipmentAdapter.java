@@ -26,7 +26,7 @@ public class AssignedShipmentAdapter extends BaseAdapter {
            shipmentFee, shipmentFeeLabel,
            shipmentSize, shipmentSizeLabel,
            shipmentWeight, shipmentWeightLabel;
-   private Button assign;
+   private Button assign,cancel;
    public AssignedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
       this.context = context;
       this.arrayList = arrayList;
@@ -58,6 +58,8 @@ public class AssignedShipmentAdapter extends BaseAdapter {
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
       assign = convertView.findViewById(R.id.assign);
+      cancel = convertView.findViewById(R.id.cancelShipment);
+
       assign.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -74,6 +76,20 @@ public class AssignedShipmentAdapter extends BaseAdapter {
             }
             CommonParams.JSONRequestWithoutResponse(js,"/shipments/deliveryMan", Request.Method.PUT,context,MainFunctionality.class);
             context.startActivity(intent);
+         }
+      });
+      cancel.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            JSONObject js = new JSONObject();
+            try {
+               js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
+               js.put("status","canceled");
+            } catch (JSONException e) {
+               e.printStackTrace();
+            }
+            CommonParams.JSONRequestWithoutResponse(js,"/shipments/sender", Request.Method.PUT,context,MainFunctionality.class);
+
          }
       });
       try {

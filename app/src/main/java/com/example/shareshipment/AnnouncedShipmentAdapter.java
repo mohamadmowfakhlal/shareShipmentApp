@@ -25,7 +25,7 @@ public class AnnouncedShipmentAdapter extends BaseAdapter {
            shipmentFee, shipmentFeeLabel,
            shipmentSize, shipmentSizeLabel,
            shipmentWeight, shipmentWeightLabel;
-   private Button assign;
+   private Button cancel;
    public AnnouncedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String sender) {
       this.context = context;
       this.arrayList = arrayList;
@@ -56,17 +56,14 @@ public class AnnouncedShipmentAdapter extends BaseAdapter {
       shipmentSizeLabel = convertView.findViewById(R.id.shipmentSizeLabel);
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
-      assign = convertView.findViewById(R.id.assign);
-      assign.setOnClickListener(new View.OnClickListener() {
+      cancel = convertView.findViewById(R.id.assign);
+      cancel.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
             JSONObject js = new JSONObject();
             try {
                js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
                js.put("status","canceled");
-               JSONObject sender = new JSONObject();
-               sender.put("phoneNumber",senderPhoneNumber);
-               js.put("sender",sender);
             } catch (JSONException e) {
                e.printStackTrace();
             }
