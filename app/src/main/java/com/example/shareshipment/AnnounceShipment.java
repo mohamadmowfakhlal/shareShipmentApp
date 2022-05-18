@@ -69,7 +69,6 @@ public class AnnounceShipment extends AppCompatActivity {
             weightValue= weight.getSelectedItem().toString();
         if(size.getVisibility() != View.GONE)
             sizeValue = size.getSelectedItem().toString();
-
         Shipment shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue);
         Intent intent = new Intent(this, ChooseRecipient.class);
         intent.putExtra("shipment", shipment);

@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AssignShipment"></activity>
+        <activity android:name=".AnnouncedShipments"></activity>
+        <activity android:name=".AssignShipment" />
         <activity android:name=".SignIn" />
         <activity android:name=".AvailableShipments" />
         <activity android:name=".DeliverShipment" />

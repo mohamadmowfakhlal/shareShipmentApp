@@ -1,7 +1,6 @@
 package com.example.shareshipment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,20 +16,20 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AssignedShipmentAdapter extends BaseAdapter {
+public class AnnouncedShipmentAdapter extends BaseAdapter {
    private Context context;
    private ArrayList<JSONObject> arrayList;
-   private String carriorPhoneNumber;
+   String senderPhoneNumber;
    private TextView shipmentId,shipmentIdLabel,
            shipmentType,shipmentTypeLabel,
            shipmentFee, shipmentFeeLabel,
            shipmentSize, shipmentSizeLabel,
            shipmentWeight, shipmentWeightLabel;
    private Button assign;
-   public AssignedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
+   public AnnouncedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String sender) {
       this.context = context;
       this.arrayList = arrayList;
-      this.carriorPhoneNumber = deliveryMan;
+      this.senderPhoneNumber = sender;
    }
    @Override
    public int getCount() {
@@ -46,7 +45,7 @@ public class AssignedShipmentAdapter extends BaseAdapter {
    }
    @Override
    public View getView(final int position, View convertView, ViewGroup parent) {
-      convertView = LayoutInflater.from(context).inflate(R.layout.rowassigned, parent, false);
+      convertView = LayoutInflater.from(context).inflate(R.layout.rowcanceled, parent, false);
       shipmentId = convertView.findViewById(R.id.shipmentId);
       shipmentIdLabel = convertView.findViewById(R.id.shipmentIdLabel);
       shipmentType = convertView.findViewById(R.id.ShipmentType);
@@ -61,19 +60,18 @@ public class AssignedShipmentAdapter extends BaseAdapter {
       assign.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-            Intent intent = new Intent(context, MainFunctionality.class);
             JSONObject js = new JSONObject();
             try {
                js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
-               js.put("status","delivered");
-               JSONObject deliveryMan = new JSONObject();
-               deliveryMan.put("phoneNumber", carriorPhoneNumber);
-               js.put("deliveryMan",deliveryMan);
+               js.put("status","canceled");
+               JSONObject sender = new JSONObject();
+               sender.put("phoneNumber",senderPhoneNumber);
+               js.put("sender",sender);
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.JSONRequestWithoutResponse(js,"/shipments/deliveryMan", Request.Method.PUT,context,MainFunctionality.class);
-            context.startActivity(intent);
+            CommonParams.JSONRequestWithoutResponse(js,"/shipments/sender", Request.Method.PUT,context,MainFunctionality.class);
+
          }
       });
       try {

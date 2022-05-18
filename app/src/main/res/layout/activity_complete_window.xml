@@ -36,7 +36,7 @@
         android:id="@+id/textView22"
         android:layout_width="238dp"
         android:layout_height="69dp"
-        android:text="DeliveryMan is looking forward  to get his shipment from you"
+        android:text="Carrior is looking forward  to get his shipment from you"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,4 +54,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.147"
         app:srcCompat="@drawable/postman" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="assignShipment"
+        android:text="Announced Shipments"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.844" />
 </androidx.constraintlayout.widget.ConstraintLayout>
