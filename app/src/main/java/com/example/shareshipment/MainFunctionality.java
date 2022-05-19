@@ -50,6 +50,10 @@ public class MainFunctionality extends AppCompatActivity {
         Intent intent = new Intent(this,DeliverShipment.class);
         startActivity(intent);
     }
-
+    public void trackShipment(View view) {
+        String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
+        String resource = "/shipments/shipmentStatus/?senderPhoneNumber="+phoneNumber;
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AnnouncedShipments.class);
+    }
 
 }

@@ -24,7 +24,8 @@ public class AnnouncedShipmentAdapter extends BaseAdapter {
            shipmentType,shipmentTypeLabel,
            shipmentFee, shipmentFeeLabel,
            shipmentSize, shipmentSizeLabel,
-           shipmentWeight, shipmentWeightLabel;
+           shipmentWeight, shipmentWeightLabel,
+            shipmentStatus;
    private Button cancel;
    public AnnouncedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String sender) {
       this.context = context;
@@ -56,6 +57,7 @@ public class AnnouncedShipmentAdapter extends BaseAdapter {
       shipmentSizeLabel = convertView.findViewById(R.id.shipmentSizeLabel);
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
+      shipmentStatus = convertView.findViewById(R.id.shipmentStatus);
       cancel = convertView.findViewById(R.id.assign);
       cancel.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -75,7 +77,8 @@ public class AnnouncedShipmentAdapter extends BaseAdapter {
       shipmentId.setText(" " + arrayList.get(position).getInt("shipmentId"));
       shipmentType.setText(arrayList.get(position).getString("shipmentType"));
       shipmentFee.setText(arrayList.get(position).getString("fee"));
-      if(arrayList.get(position).getString("size") != "null"){
+      shipmentStatus.setText(arrayList.get(position).getString("status"));
+         if(arrayList.get(position).getString("size") != "null"){
             shipmentSize.setText(arrayList.get(position).getString("size"));
          }
          else{
