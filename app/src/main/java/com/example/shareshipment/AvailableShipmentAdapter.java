@@ -24,8 +24,8 @@ public class AvailableShipmentAdapter extends BaseAdapter {
    private TextView shipmentId,
            shipmentType,
            shipmentFee,
-           shipmentSize,
-           shipmentWeight,
+           shipmentSize,shipmentSizeLabel,
+           shipmentWeight,shipmentWeightLabel,
            shipmentStatus;
    private Button assign;
    public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
@@ -55,6 +55,8 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentStatus = convertView.findViewById(R.id.shipmentStatus);
       assign = convertView.findViewById(R.id.assign);
+      shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
+      shipmentSizeLabel = convertView.findViewById(R.id.shipmentSizeLabel);
       assign.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -77,10 +79,20 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       shipmentType.setText(arrayList.get(position).getString("shipmentType"));
       shipmentFee.setText(arrayList.get(position).getString("fee"));
       shipmentStatus.setText(arrayList.get(position).getString("status"));
-      if(arrayList.get(position).getString("size") != null)
-         shipmentSize.setText(arrayList.get(position).getString("size"));
-      if(arrayList.get(position).getString("weight") != null)
-         shipmentWeight.setText(arrayList.get(position).getString("weight"));
+         if(arrayList.get(position).getString("size") != "null"){
+            shipmentSize.setText(arrayList.get(position).getString("size"));
+         }
+         else{
+            shipmentSize.setText("");
+            shipmentSizeLabel.setVisibility(View.GONE);
+         }
+         if(arrayList.get(position).getString("weight") != "null"){
+            shipmentWeight.setText(arrayList.get(position).getString("weight"));
+         }
+         else{
+            shipmentWeight.setText("");
+            shipmentWeightLabel.setVisibility(View.GONE);
+         }
       } catch (JSONException e) {
          e.printStackTrace();
       }

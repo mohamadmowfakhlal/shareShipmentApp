@@ -24,8 +24,8 @@ public class AssignedShipmentAdapter extends BaseAdapter {
    private TextView shipmentId,
            shipmentType,
            shipmentFee,
-           shipmentSize,
-           shipmentWeight,
+           shipmentSize,shipmentSizeLabel,
+           shipmentWeight,shipmentWeightLabel,
            shipmentStatus;
    private Button assign,cancel;
    public AssignedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
@@ -52,6 +52,8 @@ public class AssignedShipmentAdapter extends BaseAdapter {
       shipmentType = convertView.findViewById(R.id.ShipmentType);
       shipmentFee = convertView.findViewById(R.id.ShipmentFee);
       shipmentSize = convertView.findViewById(R.id.shipmentSize);
+      shipmentSizeLabel = convertView.findViewById(R.id.shipmentSizeLabel);
+      shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentStatus = convertView.findViewById(R.id.shipmentStatus);
       assign = convertView.findViewById(R.id.assign);
@@ -94,10 +96,20 @@ public class AssignedShipmentAdapter extends BaseAdapter {
       shipmentType.setText(arrayList.get(position).getString("shipmentType"));
       shipmentFee.setText(arrayList.get(position).getString("fee"));
       shipmentStatus.setText(arrayList.get(position).getString("status"));
-      if(arrayList.get(position).getString("size") != null)
+      if(arrayList.get(position).getString("size") != "null"){
          shipmentSize.setText(arrayList.get(position).getString("size"));
-      if(arrayList.get(position).getString("weight") != null)
+      }
+      else{
+         shipmentSize.setText("");
+         shipmentSizeLabel.setVisibility(View.GONE);
+      }
+      if(arrayList.get(position).getString("weight") != "null"){
          shipmentWeight.setText(arrayList.get(position).getString("weight"));
+      }
+      else{
+         shipmentWeight.setText("");
+         shipmentWeightLabel.setVisibility(View.GONE);
+      }
       } catch (JSONException e) {
          e.printStackTrace();
       }

@@ -75,10 +75,20 @@ public class AnnouncedShipmentAdapter extends BaseAdapter {
       shipmentId.setText(" " + arrayList.get(position).getInt("shipmentId"));
       shipmentType.setText(arrayList.get(position).getString("shipmentType"));
       shipmentFee.setText(arrayList.get(position).getString("fee"));
-      if(arrayList.get(position).getString("size") != null)
-         shipmentSize.setText(arrayList.get(position).getString("size"));
-      if(arrayList.get(position).getString("weight") != null)
-         shipmentWeight.setText(arrayList.get(position).getString("weight"));
+      if(arrayList.get(position).getString("size") != "null"){
+            shipmentSize.setText(arrayList.get(position).getString("size"));
+         }
+         else{
+            shipmentSize.setText("");
+            shipmentSizeLabel.setVisibility(View.GONE);
+         }
+         if(arrayList.get(position).getString("weight") != "null"){
+            shipmentWeight.setText(arrayList.get(position).getString("weight"));
+         }
+         else{
+            shipmentWeight.setText("");
+            shipmentWeightLabel.setVisibility(View.GONE);
+         }
       } catch (JSONException e) {
          e.printStackTrace();
       }
