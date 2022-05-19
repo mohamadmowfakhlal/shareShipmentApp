@@ -70,8 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="375dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="430dp"
         android:text="Deliver" />
 
     <TextView
@@ -112,7 +112,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="32dp"
         android:layout_marginTop="252dp"
-        android:text="Type" />
+        android:text="Size" />
 
     <TextView
         android:id="@+id/shipmentWeightLabel"
@@ -130,8 +130,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="229dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="432dp"
         android:text="cancel" />
+
+    <TextView
+        android:id="@+id/shipmentStatusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="376dp"
+        android:text="Shipment Status" />
+
+    <TextView
+        android:id="@+id/shipmentStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="375dp"
+        android:text="shipment Status" />
 
 </RelativeLayout>

@@ -66,12 +66,12 @@
 
     <Button
         android:id="@+id/assign"
-        android:layout_width="114dp"
-        android:layout_height="wrap_content"
+        android:layout_width="116dp"
+        android:layout_height="34dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="366dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="418dp"
         android:onClick="assign"
         android:text="Assign" />
 
@@ -113,7 +113,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="32dp"
         android:layout_marginTop="252dp"
-        android:text="Type" />
+        android:text="Size" />
 
     <TextView
         android:id="@+id/shipmentWeightLabel"
@@ -125,18 +125,24 @@
         android:layout_marginTop="324dp"
         android:text="Weight" />
 
-    <Button
-        android:id="@+id/cancel"
+    <TextView
+        android:id="@+id/shipmentStatusLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="246dp"
-        android:layout_marginTop="387dp"
-        android:layout_marginEnd="97dp"
-        android:layout_marginBottom="316dp"
-        android:text="cancel delivery" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="373dp"
+        android:text="shipment status" />
+
+    <TextView
+        android:id="@+id/shipmentStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="372dp"
+        android:text="shipmentStatus" />
 
 </RelativeLayout>
