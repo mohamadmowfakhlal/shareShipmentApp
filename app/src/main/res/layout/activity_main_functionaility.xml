@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143"
+        app:layout_constraintVertical_bias="0.091"
         app:srcCompat="@drawable/postman" />
 
     <Button
@@ -30,20 +30,20 @@
         app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.339" />
 
     <Button
         android:id="@+id/trackshipment"
-        android:layout_width="172dp"
-        android:layout_height="49dp"
-        android:onClick="trackShipment"
-        android:text="track shipment"
+        android:layout_width="257dp"
+        android:layout_height="39dp"
+        android:onClick="tracksendedShipment"
+        android:text="track  your sended shipment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.612" />
+        app:layout_constraintVertical_bias="0.458" />
 
     <Button
         android:id="@+id/deliverShipmentForOther"
@@ -56,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintVertical_bias="0.83" />
 
     <Button
         android:id="@+id/MyAssignedTasks"
@@ -69,20 +69,7 @@
         app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="90dp"
-        android:layout_height="25dp"
-        android:text="Welcome"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.439"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintVertical_bias="0.944" />
 
     <TextView
         android:id="@+id/SenderFunctionality"
@@ -95,18 +82,42 @@
         app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.243" />
 
     <TextView
         android:id="@+id/deliveryFunctionality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delivery funtions"
+        android:text="carrier funtions"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintVertical_bias="0.742" />
+
+    <TextView
+        android:id="@+id/ReceiverFunctionaility"
+        android:layout_width="175dp"
+        android:layout_height="47dp"
+        android:text="Receiver Functionaility"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <Button
+        android:id="@+id/trackExpectedShipment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="trackExpectedShipment"
+        android:text="track Expected Shipment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.654" />
 </androidx.constraintlayout.widget.ConstraintLayout>

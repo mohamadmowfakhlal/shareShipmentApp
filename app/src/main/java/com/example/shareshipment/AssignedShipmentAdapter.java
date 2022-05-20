@@ -56,7 +56,7 @@ public class AssignedShipmentAdapter extends BaseAdapter {
       shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentStatus = convertView.findViewById(R.id.shipmentStatus);
-      assign = convertView.findViewById(R.id.assign);
+      assign = convertView.findViewById(R.id.cancel);
       cancel = convertView.findViewById(R.id.cancelShipment);
 
       assign.setOnClickListener(new View.OnClickListener() {

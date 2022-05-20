@@ -1,7 +1,6 @@
 package com.example.shareshipment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 
@@ -54,7 +52,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       shipmentSize = convertView.findViewById(R.id.shipmentSize);
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentStatus = convertView.findViewById(R.id.shipmentStatus);
-      assign = convertView.findViewById(R.id.assign);
+      assign = convertView.findViewById(R.id.cancel);
       shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
       shipmentSizeLabel = convertView.findViewById(R.id.shipmentSizeLabel);
       assign.setOnClickListener(new View.OnClickListener() {

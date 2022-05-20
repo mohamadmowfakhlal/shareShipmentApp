@@ -65,12 +65,14 @@ android:padding="4dp">
     android:textSize="16sp" />
 
     <Button
-        android:id="@+id/assign"
+        android:id="@+id/cancel"
         android:layout_width="114dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="413dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="419dp"
         android:onClick="assign"
         android:text="cancel" />
 
@@ -143,5 +145,15 @@ android:padding="4dp">
         android:layout_marginStart="168dp"
         android:layout_marginTop="377dp"
         android:text="status" />
+
+    <Button
+        android:id="@+id/receive"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="259dp"
+        android:layout_marginTop="421dp"
+        android:text="receive" />
 
 </RelativeLayout>
