@@ -68,7 +68,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.JSONRequestWithoutResponse(js,"/shipments/deliveryMan", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
 
          }
       });

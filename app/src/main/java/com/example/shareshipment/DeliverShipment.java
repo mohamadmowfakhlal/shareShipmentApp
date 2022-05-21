@@ -23,7 +23,7 @@ public class DeliverShipment extends AppCompatActivity {
         // source city is taken from login
         String sourcecity = ((MyApplication) this.getApplication()).getCity();
 
-        String resource = "/shipments/pickup/?sourceCity="+ sourcecity + "&destinationCity="+destinationCity.getText().toString();
+        String resource = "/shipments/search/?sourceCity="+ sourcecity + "&destinationCity="+destinationCity.getText().toString();
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AvailableShipments.class);
     }
 

@@ -42,7 +42,7 @@ public class MainFunctionality extends AppCompatActivity {
     }
     public void assignShipment(View view) {
         String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
-        String resource = "/shipments/deliveryMan/?status=assigned&deliveryManPhoneNumber="+phoneNumber;
+        String resource = "/shipments/?status=assigned&userType=carrier&phoneNumber="+phoneNumber;
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AssignShipment.class);
     }
 
@@ -50,15 +50,15 @@ public class MainFunctionality extends AppCompatActivity {
         Intent intent = new Intent(this,DeliverShipment.class);
         startActivity(intent);
     }
-    public void tracksendedShipment(View view) {
+    public void trackActiveShipment(View view) {
         String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
-        String resource = "/shipments/shipmentStatus/?senderPhoneNumber="+phoneNumber;
+        String resource = "/shipments/?phoneNumber="+phoneNumber+"&userType=sender";
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AnnouncedShipments.class);
     }
 
     public void trackExpectedShipment(View view) {
         String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
-        String resource = "/shipments/receiver/?receiverPhoneNumber="+phoneNumber;
+        String resource = "/shipments/?phoneNumber="+phoneNumber+"&userType=receiver";
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AnnouncedShipments.class);
     }
 }

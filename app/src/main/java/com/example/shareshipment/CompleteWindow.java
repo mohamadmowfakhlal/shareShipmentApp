@@ -18,7 +18,7 @@ public class CompleteWindow extends AppCompatActivity {
     }
     public void assignShipment(View view) {
         String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
-        String resource = "/shipments/sender/?status=sent&senderPhoneNumber="+phoneNumber;
+        String resource = "/shipments/?status=sent&userType=sender&phoneNumber="+phoneNumber;
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AnnouncedShipments.class);
     }
 }
