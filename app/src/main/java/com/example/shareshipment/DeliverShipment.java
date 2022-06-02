@@ -42,22 +42,14 @@ public class DeliverShipment extends AppCompatActivity implements LocationListen
         if(Build.VERSION.SDK_INT>=23){
             requestPermissions(PERMISSIONS,PERMISSON_ALL);
         }
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                requestLocation();
-                handler.postDelayed(this,1000*30);
-            }
-        },1000);
+        requestLocation();
     }
 
-    public void findShipment(View view){
+    public void searchForTasks(View view){
         //ToDo the source city should be taken from login session
         destinationCity = (EditText) findViewById(R.id.destinationCity);
         // source city is taken from login
         //sourcecity = ((MyApplication) this.getApplication()).getCity();
-
         String resource = "/shipments/search/?sourceCity="+ sourcecity + "&destinationCity="+destinationCity.getText().toString();
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AvailableShipments.class);
     }
@@ -81,6 +73,7 @@ public class DeliverShipment extends AppCompatActivity implements LocationListen
             }
 
             String fnialAddress = builder.toString(); //This is the complete address.
+            Toast.makeText(this,"Got location " + fnialAddress,Toast.LENGTH_SHORT).show();
 
             //Toast.makeText(this,"Got location " + fnialAddress,Toast.LENGTH_SHORT).show();
 
@@ -94,14 +87,6 @@ public class DeliverShipment extends AppCompatActivity implements LocationListen
         super.onRequestPermissionsResult(requestCode, permissions, grantsResults);
         if(grantsResults.length>0 && grantsResults[0] == PackageManager.PERMISSION_GRANTED){
             //request Location Now
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    requestLocation();
-                    handler.postDelayed(this,1000*30);
-                }
-            },1000);
             requestLocation();
         }
     }
@@ -125,7 +110,7 @@ public class DeliverShipment extends AppCompatActivity implements LocationListen
         }
         if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER,10000,1000,this);
+                locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER,10,10,this);
             }
         }
     }

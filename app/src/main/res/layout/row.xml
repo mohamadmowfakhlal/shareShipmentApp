@@ -46,9 +46,11 @@
         android:id="@+id/shipmentSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="248dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="197dp"
+        android:layout_marginTop="448dp"
         android:text="ShipmentSize"
         android:textColor="@color/colorAccent"
         android:textSize="16sp" />
@@ -58,8 +60,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="322dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="101dp"
         android:text="ShipmentWeight"
         android:textColor="@color/colorAccent"
         android:textSize="16sp" />
@@ -70,8 +73,8 @@
         android:layout_height="34dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="418dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="509dp"
         android:onClick="assign"
         android:text="Assign" />
 
@@ -111,8 +114,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="446dp"
         android:text="Size" />
 
     <TextView
@@ -121,8 +124,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="324dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="482dp"
         android:text="Weight" />
 
     <TextView
@@ -131,8 +134,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="373dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="306dp"
         android:text="shipment status" />
 
     <TextView
@@ -141,8 +144,101 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="166dp"
-        android:layout_marginTop="372dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="181dp"
+        android:layout_marginTop="301dp"
         android:text="shipmentStatus" />
+
+    <TextView
+        android:id="@+id/pickupAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="213dp"
+        android:text="pickup Address" />
+
+    <TextView
+        android:id="@+id/deliveryAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="248dp"
+        android:text="Delivery Address" />
+
+    <TextView
+        android:id="@+id/pickupAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="191dp"
+        android:layout_marginTop="215dp"
+        android:text="test" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="251dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/senderPhoneNumberLabel"
+        android:layout_width="139dp"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="345dp"
+        android:layout_marginEnd="236dp"
+        android:layout_marginBottom="348dp"
+        android:text="sender Phone " />
+
+    <TextView
+        android:id="@+id/receiverPhoneNumberLabel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="398dp"
+        android:text="receiver Phone " />
+
+    <TextView
+        android:id="@+id/senderPhoneNumberLabel"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="191dp"
+        android:layout_marginTop="351dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="345dp"
+        android:text="sender Phone " />
+
+    <TextView
+        android:id="@+id/receiverPhoneNumberLabel1"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="194dp"
+        android:layout_marginTop="397dp"
+        android:text="receiver Phone Number" />
 
 </RelativeLayout>
