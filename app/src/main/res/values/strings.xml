@@ -7,6 +7,12 @@
         <item>Big</item>
         <item>Very Big</item>
     </string-array>
+    <string-array name="city_array">
+        <item>current Location</item>
+        <item>copenhagen</item>
+        <item>aarhus</item>
+        <item>aalborg</item>
+    </string-array>
     <string-array name="weight_array">
         <item>0-5 kg</item>
         <item>5-10 kg</item>

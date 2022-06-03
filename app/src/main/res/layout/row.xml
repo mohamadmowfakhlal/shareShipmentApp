@@ -181,7 +181,7 @@
         android:text="test" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/destinationAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -192,7 +192,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/senderPhoneNumberLabel"
+        android:id="@+id/senderNumberLablel"
         android:layout_width="139dp"
         android:layout_height="34dp"
         android:layout_alignParentStart="true"
@@ -207,7 +207,7 @@
         android:text="sender Phone " />
 
     <TextView
-        android:id="@+id/receiverPhoneNumberLabel1"
+        android:id="@+id/receiverNumberLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -217,7 +217,7 @@
         android:text="receiver Phone " />
 
     <TextView
-        android:id="@+id/senderPhoneNumberLabel"
+        android:id="@+id/senderNumber"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -232,7 +232,7 @@
         android:text="sender Phone " />
 
     <TextView
-        android:id="@+id/receiverPhoneNumberLabel1"
+        android:id="@+id/receiverNumber"
         android:layout_width="183dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

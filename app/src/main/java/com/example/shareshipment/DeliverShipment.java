@@ -16,7 +16,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -30,6 +32,7 @@ import java.util.Locale;
 
 public class DeliverShipment extends AppCompatActivity implements LocationListener {
     EditText destinationCity;
+    Spinner sourceCitySpinner;
     String sourcecity;
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
     final static int PERMISSON_ALL=1;
@@ -43,11 +46,19 @@ public class DeliverShipment extends AppCompatActivity implements LocationListen
             requestPermissions(PERMISSIONS,PERMISSON_ALL);
         }
         requestLocation();
+        sourceCitySpinner = (Spinner) findViewById(R.id.cities);
+
+        ArrayAdapter<CharSequence> adaptercities = ArrayAdapter.createFromResource(this,
+                R.array.city_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adaptercities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        sourceCitySpinner.setAdapter(adaptercities);
     }
 
-    public void searchForTasks(View view){
-        //ToDo the source city should be taken from login session
+    public void searchForTasks(View view) {
         destinationCity = (EditText) findViewById(R.id.destinationCity);
+
         // source city is taken from login
         //sourcecity = ((MyApplication) this.getApplication()).getCity();
         String resource = "/shipments/search/?sourceCity="+ sourcecity + "&destinationCity="+destinationCity.getText().toString();

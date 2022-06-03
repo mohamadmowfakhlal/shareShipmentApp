@@ -24,7 +24,9 @@ public class AvailableShipmentAdapter extends BaseAdapter {
            shipmentFee,
            shipmentSize,shipmentSizeLabel,
            shipmentWeight,shipmentWeightLabel,
-           shipmentStatus;
+           shipmentStatus,
+           senderPhoneNumber,receiverPhoneNumber,
+           pickupAddress,destinationAddress;
    private Button assign;
    public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
       this.context = context;
@@ -55,6 +57,10 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       assign = convertView.findViewById(R.id.cancel);
       shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
       shipmentSizeLabel = convertView.findViewById(R.id.shipmentSizeLabel);
+      senderPhoneNumber = convertView.findViewById(R.id.senderNumber);
+      receiverPhoneNumber = convertView.findViewById(R.id.receiverNumber);
+      pickupAddress = convertView.findViewById(R.id.pickupAddress);
+      destinationAddress = convertView.findViewById(R.id.destinationAddress);
       assign.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -69,7 +75,6 @@ public class AvailableShipmentAdapter extends BaseAdapter {
                e.printStackTrace();
             }
             CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
-
          }
       });
       try {
@@ -77,6 +82,15 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       shipmentType.setText(arrayList.get(position).getString("shipmentType"));
       shipmentFee.setText(arrayList.get(position).getString("fee"));
       shipmentStatus.setText(arrayList.get(position).getString("status"));
+      JSONObject sender = arrayList.get(position).getJSONObject("sender");
+      JSONObject receiver = arrayList.get(position).getJSONObject("receiver");
+      senderPhoneNumber.setText(sender.getString("phoneNumber"));
+      receiverPhoneNumber.setText(receiver.getString("phoneNumber"));
+      JSONObject senderAddress = sender.getJSONObject("address");
+      pickupAddress.setText(senderAddress.getString("city")+senderAddress.getString("streetName")+senderAddress.getString("streetName")+senderAddress.getString("houseNumber"));
+      JSONObject receiverAddress = receiver.getJSONObject("address");
+      destinationAddress.setText(receiverAddress.getString("city")+receiverAddress.getString("streetName")+senderAddress.getString("streetName")+senderAddress.getString("houseNumber"));
+
          if(arrayList.get(position).getString("size") != "null"){
             shipmentSize.setText(arrayList.get(position).getString("size"));
          }
