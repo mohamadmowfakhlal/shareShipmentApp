@@ -27,7 +27,7 @@ public class AssignedShipmentAdapter extends BaseAdapter {
            shipmentSize,shipmentSizeLabel,
            shipmentWeight,shipmentWeightLabel,
            shipmentStatus;
-   private Button assign,cancel;
+   private Button deliver,cancel;
    public AssignedShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
       this.context = context;
       this.arrayList = arrayList;
@@ -56,10 +56,10 @@ public class AssignedShipmentAdapter extends BaseAdapter {
       shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentStatus = convertView.findViewById(R.id.shipmentStatus);
-      assign = convertView.findViewById(R.id.cancel);
+      deliver = convertView.findViewById(R.id.cancel);
       cancel = convertView.findViewById(R.id.cancelShipment);
 
-      assign.setOnClickListener(new View.OnClickListener() {
+      deliver.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
             Intent intent = new Intent(context, MainFunctionality.class);
