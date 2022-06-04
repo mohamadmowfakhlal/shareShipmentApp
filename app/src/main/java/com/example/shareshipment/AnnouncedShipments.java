@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AnnouncedShipments extends AppCompatActivity {
 
     ListView listView;
-    AnnouncedShipmentAdapter adapter;
+    AvailableShipmentAdapter adapter;
     ArrayList<JSONObject> shipments = new ArrayList<>();
 
     @Override
@@ -37,7 +37,7 @@ public class AnnouncedShipments extends AppCompatActivity {
             e.printStackTrace();
         }
         listView = findViewById(R.id.list);
-        adapter = new AnnouncedShipmentAdapter(this, shipments,listView,((MyApplication) this.getApplication()).getPhoneNumber());
+        adapter = new AvailableShipmentAdapter(this, shipments,listView,((MyApplication) this.getApplication()).getPhoneNumber());
         listView.setAdapter(adapter);
     }
 }

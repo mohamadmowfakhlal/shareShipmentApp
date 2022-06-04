@@ -70,7 +70,7 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/assign"
         android:layout_width="116dp"
         android:layout_height="34dp"
         android:layout_alignParentStart="true"
@@ -79,6 +79,36 @@
         android:layout_marginTop="532dp"
         android:onClick="assign"
         android:text="Assign" />
+
+    <Button
+        android:id="@+id/deliver"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="266dp"
+        android:layout_marginTop="531dp"
+        android:text="Deliver" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="589dp"
+        android:text="cancel" />
+
+    <Button
+        android:id="@+id/receive"
+        android:layout_width="109dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="599dp"
+        android:text="receive" />
 
     <TextView
         android:id="@+id/shipmentIdLabel"

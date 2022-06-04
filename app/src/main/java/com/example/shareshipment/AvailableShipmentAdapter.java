@@ -1,6 +1,7 @@
 package com.example.shareshipment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 public class AvailableShipmentAdapter extends BaseAdapter {
    private Context context;
    private ArrayList<JSONObject> arrayList;
-   String deliveryManPhoneNumber;
+
+   private String deliveryManPhoneNumber;
    private TextView shipmentId,
            shipmentType,
            shipmentFee,
@@ -27,7 +29,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
            shipmentStatus,
            senderPhoneNumber,receiverPhoneNumber,
            pickupAddress,destinationAddress;
-   private Button assign;
+   private Button assign,deliver,cancel,receive;
    public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
       this.context = context;
       this.arrayList = arrayList;
@@ -54,7 +56,10 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       shipmentSize = convertView.findViewById(R.id.shipmentSize);
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentStatus = convertView.findViewById(R.id.shipmentStatus);
-      assign = convertView.findViewById(R.id.cancel);
+      assign = convertView.findViewById(R.id.assign);
+      deliver = convertView.findViewById(R.id.deliver);
+      cancel = convertView.findViewById(R.id.cancel);
+      receive = convertView.findViewById(R.id.receive);
       shipmentWeightLabel = convertView.findViewById(R.id.shipmentWeightLabel);
       shipmentSizeLabel = convertView.findViewById(R.id.shipmentSizeLabel);
       senderPhoneNumber = convertView.findViewById(R.id.senderNumber);
@@ -77,6 +82,63 @@ public class AvailableShipmentAdapter extends BaseAdapter {
             CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
          }
       });
+
+
+      deliver.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            Intent intent = new Intent(context, MainFunctionality.class);
+            JSONObject js = new JSONObject();
+            try {
+               js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
+               js.put("status","delivered");
+               JSONObject deliveryMan = new JSONObject();
+               deliveryMan.put("phoneNumber", deliveryManPhoneNumber);
+               js.put("deliveryMan",deliveryMan);
+            } catch (JSONException e) {
+               e.printStackTrace();
+            }
+            CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            context.startActivity(intent);
+         }
+      });
+      cancel.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            JSONObject js = new JSONObject();
+            try {
+               js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
+               js.put("status","sent");
+            } catch (JSONException e) {
+               e.printStackTrace();
+            }
+            CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+
+         }
+      });
+      receive.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            JSONObject js = new JSONObject();
+            try {
+               js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
+               js.put("status","received");
+            } catch (JSONException e) {
+               e.printStackTrace();
+            }
+            CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+
+         }
+      });
+      try {
+         if(arrayList.get(position).getString("status").equals("assigned") || arrayList.get(position).getString("status").equals("delivered") || arrayList.get(position).getString("status").equals("canceled") || arrayList.get(position).getString("status").equals("received"))
+            cancel.setVisibility(View.GONE);
+         if(!arrayList.get(position).getString("status").equals("delivered")){
+            receive.setVisibility(View.GONE);
+         }
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
       try {
       shipmentId.setText(" " + arrayList.get(position).getInt("shipmentId"));
       shipmentType.setText(arrayList.get(position).getString("shipmentType"));
