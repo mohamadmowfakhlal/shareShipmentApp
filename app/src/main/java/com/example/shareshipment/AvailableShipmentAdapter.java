@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class AvailableShipmentAdapter extends BaseAdapter {
    private Context context;
    private ArrayList<JSONObject> arrayList;
-
+   private String sourceRequest="";
    private String deliveryManPhoneNumber;
    private TextView shipmentId,
            shipmentType,
@@ -30,10 +30,17 @@ public class AvailableShipmentAdapter extends BaseAdapter {
            senderPhoneNumber,receiverPhoneNumber,
            pickupAddress,destinationAddress;
    private Button assign,deliver,cancel,receive;
+   public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan,String sourceRequest) {
+      this.context = context;
+      this.arrayList = arrayList;
+      this.deliveryManPhoneNumber = deliveryMan;
+      this.sourceRequest = sourceRequest;
+   }
    public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
       this.context = context;
       this.arrayList = arrayList;
       this.deliveryManPhoneNumber = deliveryMan;
+      this.sourceRequest = sourceRequest;
    }
    @Override
    public int getCount() {
@@ -108,7 +115,11 @@ public class AvailableShipmentAdapter extends BaseAdapter {
             JSONObject js = new JSONObject();
             try {
                js.put("shipmentId",arrayList.get(position).getInt("shipmentId"));
-               js.put("status","sent");
+               if(sourceRequest.equals("AssignShipment"))
+                  js.put("status","sent");
+               else
+                  js.put("status","canceled");
+
             } catch (JSONException e) {
                e.printStackTrace();
             }
@@ -131,10 +142,31 @@ public class AvailableShipmentAdapter extends BaseAdapter {
          }
       });
       try {
-         if(arrayList.get(position).getString("status").equals("assigned") || arrayList.get(position).getString("status").equals("delivered") || arrayList.get(position).getString("status").equals("canceled") || arrayList.get(position).getString("status").equals("received"))
-            cancel.setVisibility(View.GONE);
-         if(!arrayList.get(position).getString("status").equals("delivered")){
+         if(arrayList.get(position).getString("status").equals("assigned") ){
+            assign.setVisibility(View.GONE);
             receive.setVisibility(View.GONE);
+         }
+         if(arrayList.get(position).getString("status").equals("sent") && sourceRequest.equals("AnnouncedShipments")){
+            receive.setVisibility(View.GONE);
+            deliver.setVisibility(View.GONE);
+            assign.setVisibility(View.GONE);
+         }
+         if(arrayList.get(position).getString("status").equals("sent") && sourceRequest.equals("DeliverShipment")){
+            receive.setVisibility(View.GONE);
+            cancel.setVisibility(View.GONE);
+            deliver.setVisibility(View.GONE);
+         }
+         if(arrayList.get(position).getString("status").equals("delivered") ){
+            //receive.setVisibility(View.GONE);
+            deliver.setVisibility(View.GONE);
+            assign.setVisibility(View.GONE);
+            cancel.setVisibility(View.GONE);
+         }
+         if(arrayList.get(position).getString("status").equals("canceled") || arrayList.get(position).getString("status").equals("received")){
+            receive.setVisibility(View.GONE);
+            deliver.setVisibility(View.GONE);
+            assign.setVisibility(View.GONE);
+            cancel.setVisibility(View.GONE);
          }
       } catch (JSONException e) {
          e.printStackTrace();
