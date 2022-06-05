@@ -33,8 +33,8 @@ public class MainFunctionality extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_functionaility);
-        if(getIntent().getStringExtra("city")!=null)
-            ((MyApplication) this.getApplication()).setCity(getIntent().getStringExtra("city"));
+        //if(getIntent().getStringExtra("city")!=null)
+          //  ((MyApplication) this.getApplication()).setCity(getIntent().getStringExtra("city"));
     }
     public void announceShipment(View view) {
         Intent intent = new Intent(this,AnnounceShipment.class);

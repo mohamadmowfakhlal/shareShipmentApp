@@ -64,7 +64,6 @@ public class AnnounceShipment extends AppCompatActivity {
     public void selectRecipient(View view)  {
         String weightValue = null;
         String sizeValue = null;
-
         if(weight.getVisibility()!= View.GONE)
             weightValue= weight.getSelectedItem().toString();
         if(size.getVisibility() != View.GONE)
