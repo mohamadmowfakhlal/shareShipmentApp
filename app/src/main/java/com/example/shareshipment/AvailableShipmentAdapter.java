@@ -28,7 +28,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
            shipmentWeight,shipmentWeightLabel,
            shipmentStatus,
            senderPhoneNumber,receiverPhoneNumber,
-           pickupAddress,destinationAddress;
+           pickupAddress,destinationAddress,deadline;
    private Button assign,deliver,cancel,receive;
    public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan,String sourceRequest) {
       this.context = context;
@@ -63,6 +63,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       shipmentSize = convertView.findViewById(R.id.shipmentSize);
       shipmentWeight = convertView.findViewById(R.id.shipmentWeight);
       shipmentStatus = convertView.findViewById(R.id.shipmentStatus);
+      deadline = convertView.findViewById(R.id.shipmentDeadline);
       assign = convertView.findViewById(R.id.assign);
       deliver = convertView.findViewById(R.id.deliver);
       cancel = convertView.findViewById(R.id.cancel);
@@ -175,6 +176,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       shipmentId.setText(" " + arrayList.get(position).getInt("shipmentId"));
       shipmentType.setText(arrayList.get(position).getString("shipmentType"));
       shipmentFee.setText(arrayList.get(position).getString("fee"));
+      deadline.setText(arrayList.get(position).getString("deadline"));
       shipmentStatus.setText(arrayList.get(position).getString("status"));
       JSONObject sender = arrayList.get(position).getJSONObject("sender");
       JSONObject receiver = arrayList.get(position).getJSONObject("receiver");

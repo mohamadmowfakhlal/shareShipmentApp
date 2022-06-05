@@ -2,20 +2,20 @@ package com.example.shareshipment;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.EditText;
-import android.widget.Spinner;
 
 public class Shipment implements Parcelable {
     private String shipmentType;
     private String size;
     private String weight;
     private int fee;
+    private  String deadline;
 
     protected Shipment(Parcel in) {
         setShipmentType(in.readString());
         setSize(in.readString());
         setWeight(in.readString());
         setFee(in.readInt());
+        setDeadline(in.readString());
     }
 
     public static final Creator<Shipment> CREATOR = new Creator<Shipment>() {
@@ -30,13 +30,19 @@ public class Shipment implements Parcelable {
         }
     };
 
-    public Shipment(String shipmentType, int fee, String weight, String size) {
+    public Shipment(String shipmentType, int fee, String weight, String size,String deadline) {
             this.shipmentType = shipmentType;
             this.fee = fee;
             this.weight = weight;
             this.size = size;
+            this.deadline=deadline;
     }
-
+    public Shipment(String shipmentType, int fee, String weight, String size) {
+        this.shipmentType = shipmentType;
+        this.fee = fee;
+        this.weight = weight;
+        this.size = size;
+    }
     @Override
     public int describeContents() {
         return 0;
@@ -48,6 +54,7 @@ public class Shipment implements Parcelable {
         dest.writeString(getSize());
         dest.writeString(getWeight());
         dest.writeInt(getFee());
+        dest.writeString(getDeadline());
     }
 
     public String getShipmentType() {
@@ -82,5 +89,13 @@ public class Shipment implements Parcelable {
 
     public void setFee(int fee) {
         this.fee = fee;
+    }
+
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
     }
 }

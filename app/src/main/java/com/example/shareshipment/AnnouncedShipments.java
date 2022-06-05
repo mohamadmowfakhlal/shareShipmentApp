@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class AnnouncedShipments extends AppCompatActivity {
 
-    ListView listView;
+    ListView listViewAnnounceShipments;
     AvailableShipmentAdapter adapter;
     ArrayList<JSONObject> shipments = new ArrayList<>();
 
@@ -26,18 +26,18 @@ public class AnnouncedShipments extends AppCompatActivity {
         String jsonArray = intent.getStringExtra("shipments");
 
         try {
-            JSONArray array = new JSONArray(jsonArray);
-            if (array != null) {
-                for (int i=0;i<array.length();i++){
-                    shipments.add((JSONObject) array.getJSONObject(i));
+            JSONArray receivedShipments = new JSONArray(jsonArray);
+            if (receivedShipments != null) {
+                for (int i=0;i<receivedShipments.length();i++){
+                    shipments.add((JSONObject) receivedShipments.getJSONObject(i));
                 }
             }
             //System.out.println(array.toString(2));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        listView = findViewById(R.id.list);
-        adapter = new AvailableShipmentAdapter(this, shipments,listView,((MyApplication) this.getApplication()).getPhoneNumber(),"AnnouncedShipments");
-        listView.setAdapter(adapter);
+        listViewAnnounceShipments = findViewById(R.id.announceShipments);
+        adapter = new AvailableShipmentAdapter(this, shipments, listViewAnnounceShipments,((MyApplication) this.getApplication()).getPhoneNumber(),"AnnouncedShipments");
+        listViewAnnounceShipments.setAdapter(adapter);
     }
 }

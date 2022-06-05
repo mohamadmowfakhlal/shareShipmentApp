@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class AnnounceShipment extends AppCompatActivity {
     Spinner size ;
     Spinner weight ;
+    Spinner deadline;
     TextView weightLabel;
     TextView sizeLabel;
     String shipmentType;
@@ -26,10 +27,17 @@ public class AnnounceShipment extends AppCompatActivity {
         weightLabel = (TextView) findViewById(R.id.weightLabel);
         sizeLabel = (TextView) findViewById(R.id.sizeLabel);
         fee = (EditText) findViewById(R.id.fee);
+        deadline = (Spinner) findViewById(R.id.deadline);
         sizeLabel.setVisibility(View.GONE);
         weightLabel.setVisibility(View.GONE);
         size.setVisibility(View.GONE);
         weight.setVisibility(View.GONE);
+        ArrayAdapter<CharSequence> adapterDeadline = ArrayAdapter.createFromResource(this,
+                R.array.deadline_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapterDeadline.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        deadline.setAdapter(adapterDeadline);
 
     }
     public void letter(View view) {
@@ -68,7 +76,7 @@ public class AnnounceShipment extends AppCompatActivity {
             weightValue= weight.getSelectedItem().toString();
         if(size.getVisibility() != View.GONE)
             sizeValue = size.getSelectedItem().toString();
-        Shipment shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue);
+        Shipment shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue,deadline.getSelectedItem().toString());
         Intent intent = new Intent(this, ChooseRecipient.class);
         intent.putExtra("shipment", shipment);
         startActivity(intent);

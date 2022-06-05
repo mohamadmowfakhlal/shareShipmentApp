@@ -29,6 +29,7 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
         String shipmentType = shipment.getShipmentType();
         String size = shipment.getSize();
         String weight = shipment.getWeight();
+        String dealine = shipment.getDeadline();
         String recipientPhoneNumber = previousIntent.getStringExtra("recipientPhoneNumber");
         String notes = previousIntent.getStringExtra("notes");
         js = new JSONObject();
@@ -38,6 +39,7 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
             js.put("size",size);
             js.put("weight",weight);
             js.put("notes",notes);
+            js.put("deadline",dealine);
             js.put("status","sent");
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
