@@ -40,6 +40,6 @@ public class ChooseRecipient extends AppCompatActivity {
         notes = findViewById(R.id.notes);
     }
     public void ChooseRecipient(View view){
-        CommonParams.jsonRequestForRecipientAssurance(new JSONObject(),"/users/"+recipientPhoneNumber.getText().toString(), Request.Method.GET,getApplicationContext(),ConfirmRecipientInformation.class,(Shipment) getIntent().getParcelableExtra("shipment"),recipientPhoneNumber.getText().toString(),notes.getText().toString());
+        CommonParams.jsonRequestForRecipientAssurance(new JSONObject(),"/users/"+recipientPhoneNumber.getText().toString(), Request.Method.GET,getApplicationContext(),ConfirmRecipientInformation.class,recipientPhoneNumber.getText().toString(),notes.getText().toString());
     }
 }

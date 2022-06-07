@@ -7,6 +7,9 @@ public class MyApplication extends Application {
     private String fullName;
     private String phoneNumber;
     private String city;
+    private  String productImage;
+    private Shipment shipment;
+
     public String getFullName() {
         return fullName;
     }
@@ -29,5 +32,21 @@ public class MyApplication extends Application {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public Shipment getShipment() {
+        return shipment;
+    }
+
+    public void setShipment(Shipment shipment) {
+        this.shipment = shipment;
     }
 }

@@ -9,13 +9,14 @@ public class Shipment implements Parcelable {
     private String weight;
     private int fee;
     private  String deadline;
-
+    private String image;
     protected Shipment(Parcel in) {
         setShipmentType(in.readString());
         setSize(in.readString());
         setWeight(in.readString());
         setFee(in.readInt());
         setDeadline(in.readString());
+        setImage(in.readString());
     }
 
     public static final Creator<Shipment> CREATOR = new Creator<Shipment>() {
@@ -36,12 +37,21 @@ public class Shipment implements Parcelable {
             this.weight = weight;
             this.size = size;
             this.deadline=deadline;
+
     }
     public Shipment(String shipmentType, int fee, String weight, String size) {
         this.shipmentType = shipmentType;
         this.fee = fee;
         this.weight = weight;
         this.size = size;
+    }
+    public Shipment(String shipmentType, int fee, String weight, String size,String deadline,String image) {
+        this.shipmentType = shipmentType;
+        this.fee = fee;
+        this.weight = weight;
+        this.size = size;
+        this.deadline=deadline;
+        this.image = image;
     }
     @Override
     public int describeContents() {
@@ -55,6 +65,7 @@ public class Shipment implements Parcelable {
         dest.writeString(getWeight());
         dest.writeInt(getFee());
         dest.writeString(getDeadline());
+        dest.writeString(getImage());
     }
 
     public String getShipmentType() {
@@ -97,5 +108,13 @@ public class Shipment implements Parcelable {
 
     public void setDeadline(String deadline) {
         this.deadline = deadline;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -24,7 +24,9 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent previousIntent = getIntent();
-        Shipment shipment = getIntent().getParcelableExtra("shipment");
+        //Shipment shipment = getIntent().getParcelableExtra("shipment");
+        Shipment shipment = ((MyApplication) this.getApplication()).getShipment();
+
         Integer fee = shipment.getFee();
         String shipmentType = shipment.getShipmentType();
         String size = shipment.getSize();
@@ -32,6 +34,7 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
         String dealine = shipment.getDeadline();
         String recipientPhoneNumber = previousIntent.getStringExtra("recipientPhoneNumber");
         String notes = previousIntent.getStringExtra("notes");
+        String productImage = ((MyApplication) this.getApplication()).getProductImage();
         js = new JSONObject();
         try {
             js.put("fee",fee);
@@ -41,6 +44,7 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
             js.put("notes",notes);
             js.put("deadline",dealine);
             js.put("status","sent");
+            js.put("productImage",productImage);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
             js.put("sentDate",formatter.format(date));
