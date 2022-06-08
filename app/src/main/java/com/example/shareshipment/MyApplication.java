@@ -9,7 +9,7 @@ public class MyApplication extends Application {
     private String city;
     private  String productImage;
     private Shipment shipment;
-
+    private String shipments;
     public String getFullName() {
         return fullName;
     }
@@ -48,5 +48,13 @@ public class MyApplication extends Application {
 
     public void setShipment(Shipment shipment) {
         this.shipment = shipment;
+    }
+
+    public String getShipments() {
+        return shipments;
+    }
+
+    public void setShipments(String shipments) {
+        this.shipments = shipments;
     }
 }

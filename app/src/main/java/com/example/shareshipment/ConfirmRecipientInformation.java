@@ -31,7 +31,7 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
         String shipmentType = shipment.getShipmentType();
         String size = shipment.getSize();
         String weight = shipment.getWeight();
-        String dealine = shipment.getDeadline();
+        String deadline = shipment.getDeadline();
         String recipientPhoneNumber = previousIntent.getStringExtra("recipientPhoneNumber");
         String notes = previousIntent.getStringExtra("notes");
         String productImage = ((MyApplication) this.getApplication()).getProductImage();
@@ -42,9 +42,9 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
             js.put("size",size);
             js.put("weight",weight);
             js.put("notes",notes);
-            js.put("deadline",dealine);
+            js.put("deadline",deadline);
             js.put("status","sent");
-            js.put("productImage",productImage);
+            js.put("image",productImage);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
             js.put("sentDate",formatter.format(date));

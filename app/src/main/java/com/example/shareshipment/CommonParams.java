@@ -207,7 +207,7 @@ public class CommonParams {
         queue.add(jsonObjReq);
     }
 
-    public static void enhancedJSONArrayRequest(JSONArray js, final String resource, int method, final Context context, final Class className){
+    public static void enhancedJSONArrayRequest(JSONArray js, final String resource, int method, final Context context, final Class className, final MyApplication myApplication){
         RequestQueue queue =  Volley.newRequestQueue(context);
         Intent intent;
 
@@ -219,7 +219,8 @@ public class CommonParams {
             public void onResponse(JSONArray  response) {
                 if(response!=null) {
                         Intent intent = new Intent(context, className);
-                        intent.putExtra("shipments",response.toString());
+                        //intent.putExtra("shipments",response.toString());
+                    myApplication.setShipments(response.toString());
                         context.startActivity(intent);
                 }
             }

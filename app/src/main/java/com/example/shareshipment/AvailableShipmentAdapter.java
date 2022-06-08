@@ -2,11 +2,15 @@ package com.example.shareshipment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +19,7 @@ import com.android.volley.Request;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 public class AvailableShipmentAdapter extends BaseAdapter {
    private Context context;
@@ -30,6 +35,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
            senderPhoneNumber,receiverPhoneNumber,
            pickupAddress,destinationAddress,deadline;
    private Button assign,deliver,cancel,receive;
+   private ImageView productIamge;
    public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan,String sourceRequest) {
       this.context = context;
       this.arrayList = arrayList;
@@ -74,6 +80,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       receiverPhoneNumber = convertView.findViewById(R.id.receiverNumber);
       pickupAddress = convertView.findViewById(R.id.pickupAddress);
       destinationAddress = convertView.findViewById(R.id.destinationAddress);
+      productIamge = convertView.findViewById(R.id.productImage);
       assign.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -186,7 +193,9 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       pickupAddress.setText(senderAddress.getString("city")+senderAddress.getString("streetName")+senderAddress.getString("streetName")+senderAddress.getString("houseNumber"));
       JSONObject receiverAddress = receiver.getJSONObject("address");
       destinationAddress.setText(receiverAddress.getString("city")+receiverAddress.getString("streetName")+senderAddress.getString("streetName")+senderAddress.getString("houseNumber"));
-
+      byte[] imageBytes = Base64.decode(arrayList.get(position).getString("image"),Base64.DEFAULT);
+      Bitmap image = Main.createBitmapFromByteArray(imageBytes);
+      productIamge.setImageBitmap(image);
          if(arrayList.get(position).getString("size") != "null"){
             shipmentSize.setText(arrayList.get(position).getString("size"));
          }

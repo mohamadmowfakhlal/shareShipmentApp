@@ -44,7 +44,7 @@ public class DeliverShipment extends AppCompatActivity  {
              resource = "/shipments/search/?sourceCity="+ currentLocation + "&destinationCity="+destinationCity.getText().toString();
         else
             resource = "/shipments/search/?sourceCity="+ selectedLocation + "&destinationCity="+destinationCity.getText().toString();
-        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AvailableShipments.class);
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AvailableShipments.class,(MyApplication) this.getApplication());
     }
 
 

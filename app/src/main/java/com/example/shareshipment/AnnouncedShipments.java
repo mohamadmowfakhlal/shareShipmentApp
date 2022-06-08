@@ -23,8 +23,8 @@ public class AnnouncedShipments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announced_shipments);
         Intent intent = getIntent();
-        String jsonArray = intent.getStringExtra("shipments");
-
+        //String jsonArray = intent.getStringExtra("shipments");
+        String jsonArray = ((MyApplication) getApplication()).getShipments();
         try {
             JSONArray receivedShipments = new JSONArray(jsonArray);
             if (receivedShipments != null) {
