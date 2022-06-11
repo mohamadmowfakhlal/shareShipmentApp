@@ -21,8 +21,7 @@ public class AssignShipment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assign_shipment);
-        Intent intent = getIntent();
-        String jsonArray = intent.getStringExtra("shipments");
+        String jsonArray = ((MyApplication) getApplication()).getShipments();
 
         try {
             JSONArray array = new JSONArray(jsonArray);

@@ -23,12 +23,12 @@ public class DeliverShipment extends AppCompatActivity  {
         setContentView(R.layout.activity_deliver_shipment);
         sourceCitySpinner = (Spinner) findViewById(R.id.cities);
 
-        ArrayAdapter<CharSequence> adaptercities = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapterCities = ArrayAdapter.createFromResource(this,
                 R.array.city_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
-        adaptercities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterCities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        sourceCitySpinner.setAdapter(adaptercities);
+        sourceCitySpinner.setAdapter(adapterCities);
     }
 
     public void searchForTasks(View view) {
