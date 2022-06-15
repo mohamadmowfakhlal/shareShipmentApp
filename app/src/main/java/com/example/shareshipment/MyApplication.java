@@ -10,6 +10,8 @@ public class MyApplication extends Application {
     private  String productImage;
     private Shipment shipment;
     private String shipments;
+    private String recipientPhoneNumber;
+    private String notes;
     public String getFullName() {
         return fullName;
     }
@@ -56,5 +58,21 @@ public class MyApplication extends Application {
 
     public void setShipments(String shipments) {
         this.shipments = shipments;
+    }
+
+    public String getRecipientPhoneNumber() {
+        return recipientPhoneNumber;
+    }
+
+    public void setRecipientPhoneNumber(String recipientPhoneNumber) {
+        this.recipientPhoneNumber = recipientPhoneNumber;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

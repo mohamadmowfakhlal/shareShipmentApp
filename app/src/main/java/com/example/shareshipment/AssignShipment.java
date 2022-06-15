@@ -30,7 +30,6 @@ public class AssignShipment extends AppCompatActivity {
                     shipments.add((JSONObject) array.getJSONObject(i));
                 }
             }
-            //System.out.println(array.toString(2));
         } catch (JSONException e) {
             e.printStackTrace();
         }

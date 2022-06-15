@@ -38,8 +38,11 @@ public class ChooseRecipient extends AppCompatActivity {
         setContentView(R.layout.activity_recipent);
         recipientPhoneNumber =  findViewById(R.id.recipientPhoneNumber);
         notes = findViewById(R.id.notes);
+
     }
     public void ChooseRecipient(View view){
-        CommonParams.jsonRequestForRecipientAssurance(new JSONObject(),"/users/"+recipientPhoneNumber.getText().toString(), Request.Method.GET,getApplicationContext(),ConfirmRecipientInformation.class,recipientPhoneNumber.getText().toString(),notes.getText().toString());
+        ((MyApplication) this.getApplication()).setRecipientPhoneNumber(recipientPhoneNumber.getText().toString());
+        ((MyApplication) this.getApplication()).setNotes(notes.getText().toString());
+        CommonParams.jsonRequestSignIn(new JSONObject(),"/users/",Request.Method.GET,getApplicationContext(),ConfirmRecipientInformation.class,recipientPhoneNumber.getText().toString());
     }
 }

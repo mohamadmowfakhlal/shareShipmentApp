@@ -37,7 +37,7 @@ public class Password extends AppCompatActivity {
             js.put("active","true");
             js.put("password",passwordValue);
             String resource = "/users/";
-            CommonParams.JSONRequestWithoutResponse(js,resource, Request.Method.PUT,getApplicationContext(),MainFunctionality.class);
+            CommonParams.jsonRequestSignIn(js,resource, Request.Method.PUT,getApplicationContext(),MainFunctionality.class);
         }
     }
 }

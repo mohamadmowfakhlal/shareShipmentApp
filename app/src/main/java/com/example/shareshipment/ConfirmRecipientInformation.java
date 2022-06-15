@@ -32,8 +32,8 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
         String size = shipment.getSize();
         String weight = shipment.getWeight();
         String deadline = shipment.getDeadline();
-        String recipientPhoneNumber = previousIntent.getStringExtra("recipientPhoneNumber");
-        String notes = previousIntent.getStringExtra("notes");
+        String recipientPhoneNumber = ((MyApplication) this.getApplication()).getRecipientPhoneNumber();
+        String notes = ((MyApplication) this.getApplication()).getNotes();
         String productImage = ((MyApplication) this.getApplication()).getProductImage();
         js = new JSONObject();
         try {
@@ -70,6 +70,6 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
 
     public void announceShipment(View view){
         String resource = "/shipments";
-        CommonParams.JSONRequestWithoutResponse(js,resource,Request.Method.POST,getApplicationContext(),CompleteWindow.class);
+        CommonParams.jsonRequestSignIn(js,resource,Request.Method.POST,getApplicationContext(),CompleteWindow.class);
     }
 }

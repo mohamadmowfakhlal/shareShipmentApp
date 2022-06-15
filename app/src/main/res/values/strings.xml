@@ -14,7 +14,8 @@
         <item>aalborg</item>
     </string-array>
     <string-array name="weight_array">
-        <item>0-5 kg</item>
+        <item>0-2 kg</item>
+        <item>2-5 kg</item>
         <item>5-10 kg</item>
         <item>10-15 kg</item>
         <item>15-20 kg</item>
@@ -29,6 +30,6 @@
         <item>0-6 hour</item>
         <item>0-7 hour</item>
         <item>0-8 hour</item>
-        <item>more than 20 kg</item>
+        <item>more than 8 hours</item>
     </string-array>
 </resources>

@@ -94,7 +94,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
          }
       });
 
@@ -113,7 +113,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
             context.startActivity(intent);
          }
       });
@@ -131,7 +131,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
 
          }
       });
@@ -145,7 +145,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.JSONRequestWithoutResponse(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
 
          }
       });

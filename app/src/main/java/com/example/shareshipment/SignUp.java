@@ -55,7 +55,7 @@ public class SignUp extends AppCompatActivity {
             e.printStackTrace();
         }
         String resource = "/users";
-        CommonParams.JSONRequestWithoutResponse(user,resource,Request.Method.POST,getApplicationContext(), ActivationCode.class);
+        CommonParams.jsonRequestSignIn(user,resource,Request.Method.POST,getApplicationContext(), ActivationCode.class);
 
     }
 
