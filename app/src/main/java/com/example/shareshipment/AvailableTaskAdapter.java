@@ -3,7 +3,6 @@ package com.example.shareshipment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +18,8 @@ import com.android.volley.Request;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-public class AvailableShipmentAdapter extends BaseAdapter {
+public class AvailableTaskAdapter extends BaseAdapter {
    private Context context;
    private ArrayList<JSONObject> arrayList;
    private String sourceRequest="";
@@ -36,13 +34,13 @@ public class AvailableShipmentAdapter extends BaseAdapter {
            pickupAddress,destinationAddress,deadline;
    private Button assign,deliver,cancel,receive;
    private ImageView productIamge;
-   public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan,String sourceRequest) {
+   public AvailableTaskAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String deliveryMan, String sourceRequest) {
       this.context = context;
       this.arrayList = arrayList;
       this.deliveryManPhoneNumber = deliveryMan;
       this.sourceRequest = sourceRequest;
    }
-   public AvailableShipmentAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView,String deliveryMan) {
+   public AvailableTaskAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String deliveryMan) {
       this.context = context;
       this.arrayList = arrayList;
       this.deliveryManPhoneNumber = deliveryMan;
@@ -194,7 +192,7 @@ public class AvailableShipmentAdapter extends BaseAdapter {
       JSONObject receiverAddress = receiver.getJSONObject("address");
       destinationAddress.setText(receiverAddress.getString("city")+receiverAddress.getString("streetName")+senderAddress.getString("streetName")+senderAddress.getString("houseNumber"));
       byte[] imageBytes = Base64.decode(arrayList.get(position).getString("image"),Base64.DEFAULT);
-      Bitmap image = Main.createBitmapFromByteArray(imageBytes);
+      Bitmap image = BitmapImage.createBitmapFromByteArray(imageBytes);
       productIamge.setImageBitmap(image);
          if(arrayList.get(position).getString("size") != "null"){
             shipmentSize.setText(arrayList.get(position).getString("size"));

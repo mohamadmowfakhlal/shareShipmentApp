@@ -2,7 +2,6 @@ package com.example.shareshipment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -12,17 +11,16 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AvailableShipments extends AppCompatActivity {
-
+public class AssignTask extends AppCompatActivity {
     ListView listView;
-    AvailableShipmentAdapter adapter;
+    AvailableTaskAdapter adapter;
     ArrayList<JSONObject> shipments = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_available_shipments);
-        String jsonArray = ((MyApplication) getApplication()).getShipments();
+        setContentView(R.layout.activity_assign_shipment);
+        String jsonArray = ((MyApplicationData) getApplication()).getShipments();
 
         try {
             JSONArray array = new JSONArray(jsonArray);
@@ -31,12 +29,11 @@ public class AvailableShipments extends AppCompatActivity {
                     shipments.add((JSONObject) array.getJSONObject(i));
                 }
             }
-            //System.out.println(array.toString(2));
         } catch (JSONException e) {
             e.printStackTrace();
         }
         listView = findViewById(R.id.list);
-        adapter = new AvailableShipmentAdapter(this, shipments,listView,((MyApplication) this.getApplication()).getPhoneNumber(),"DeliverShipment");
+        adapter = new AvailableTaskAdapter(this, shipments,listView, ((MyApplicationData) this.getApplication()).getPhoneNumber(),"AssignShipment");
         listView.setAdapter(adapter);
     }
 }

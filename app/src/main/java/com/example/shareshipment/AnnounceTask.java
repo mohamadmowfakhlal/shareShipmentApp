@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 
-public class AnnounceShipment extends AppCompatActivity implements View.OnClickListener{
+public class AnnounceTask extends AppCompatActivity implements View.OnClickListener{
     Spinner size ;
     Spinner weight ;
     Spinner deadline;
@@ -35,20 +35,20 @@ public class AnnounceShipment extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announce_shipment);
-        size = (Spinner) findViewById(R.id.size);
-        weight = (Spinner) findViewById(R.id.weight);
-        weightLabel = (TextView) findViewById(R.id.weightLabel);
-        sizeLabel = (TextView) findViewById(R.id.sizeLabel);
-        fee = (EditText) findViewById(R.id.fee);
-        deadline = (Spinner) findViewById(R.id.deadline);
-        itemPhoto = (ImageView)findViewById(R.id.itemPhoto);
+        size = findViewById(R.id.size);
+        weight =  findViewById(R.id.weight);
+        weightLabel =  findViewById(R.id.weightLabel);
+        sizeLabel =  findViewById(R.id.sizeLabel);
+        fee =  findViewById(R.id.fee);
+        deadline =  findViewById(R.id.deadline);
+        itemPhoto = findViewById(R.id.itemPhoto);
         itemPhoto.setOnClickListener(this);
         sizeLabel.setVisibility(View.GONE);
         weightLabel.setVisibility(View.GONE);
         size.setVisibility(View.GONE);
         weight.setVisibility(View.GONE);
         ArrayAdapter<CharSequence> adapterDeadline = ArrayAdapter.createFromResource(this,
-                R.array.deadline_array, android.R.layout.simple_spinner_item);
+        R.array.deadline_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapterDeadline.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -94,8 +94,7 @@ public class AnnounceShipment extends AppCompatActivity implements View.OnClickL
         Shipment shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue,deadline.getSelectedItem().toString());
         Intent intent = new Intent(this, ChooseRecipient.class);
         intent.putExtra("shipment", shipment);
-        ((MyApplication) this.getApplication()).setShipment(shipment);
-
+        ((MyApplicationData) this.getApplication()).setShipment(shipment);
         startActivity(intent);
     }
 
@@ -119,7 +118,7 @@ public class AnnounceShipment extends AppCompatActivity implements View.OnClickL
             ByteArrayOutputStream imageBytes = new ByteArrayOutputStream();
             image.compress(Bitmap.CompressFormat.JPEG,100,imageBytes);
             productImage = Base64.encodeToString(imageBytes.toByteArray(),Base64.DEFAULT);
-            ((MyApplication) this.getApplication()).setProductImage(productImage);
+            ((MyApplicationData) this.getApplication()).setProductImage(productImage);
         }
     }
 }

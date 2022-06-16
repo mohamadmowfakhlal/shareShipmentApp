@@ -11,7 +11,7 @@ import com.android.volley.Request;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignIn extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
     EditText phoneNumber;
     EditText password;
     @Override
@@ -30,6 +30,6 @@ public class SignIn extends AppCompatActivity {
         login.put("password",password.getText().toString());
         String resource = "/users/login";
         CommonParams.jsonRequestSignIn(login,resource, Request.Method.POST,getApplicationContext(),MainFunctionality.class);
-        ((MyApplication) this.getApplication()).setPhoneNumber(phoneNumber.getText().toString());
+        ((MyApplicationData) this.getApplication()).setPhoneNumber(phoneNumber.getText().toString());
     }
 }

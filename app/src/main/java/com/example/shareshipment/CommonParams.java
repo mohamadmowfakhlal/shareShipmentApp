@@ -16,12 +16,9 @@
 
 package com.example.shareshipment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Base64;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -46,7 +43,6 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * This class includes a small subset of standard GATT attributes for demonstration purposes.
@@ -154,6 +150,7 @@ public class CommonParams {
         };
         queue.add(jsonObjReq);
     }
+
     public  static  void jsonRequestSignIn(JSONObject js, final String resource, int method, final Context context, final Class className,final String res){
         RequestQueue queue =  Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, serverURL+resource+res, js,new Response.Listener<JSONObject>() {
@@ -249,7 +246,7 @@ public class CommonParams {
         queue.add(jsonObjReq);
     }
 
-    public static void enhancedJSONArrayRequest(JSONArray js, final String resource, int method, final Context context, final Class className, final MyApplication myApplication){
+    public static void enhancedJSONArrayRequest(JSONArray js, final String resource, int method, final Context context, final Class className, final MyApplicationData myApplication){
         RequestQueue queue =  Volley.newRequestQueue(context);
 
         // Make request for JSONObject

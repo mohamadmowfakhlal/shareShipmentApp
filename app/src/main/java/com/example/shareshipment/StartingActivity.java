@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,7 +24,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class WelcomeActivity extends AppCompatActivity implements LocationListener {
+public class StartingActivity extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
     final static int PERMISSON_ALL=1;
@@ -33,7 +32,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_starting);
         locationManager =  (LocationManager) getSystemService(LOCATION_SERVICE);
         if(Build.VERSION.SDK_INT>=23){
             requestPermissions(PERMISSIONS,PERMISSON_ALL);
@@ -61,13 +60,13 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
 
     }
     public void signUp(View view) {
-        Intent intent = new Intent(this, SignUp.class);
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
 
   }
 
     public void signIn(View view){
-        Intent intent = new Intent(this, SignIn.class);
+        Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
     }
     @Override
@@ -84,7 +83,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
             for (int i=0; i<=maxLines; i++) {
                 String addressStr = address.get(0).getAddressLine(i);
                 sourcecity = address.get(0).getLocality();
-                ((MyApplication) this.getApplication()).setCity(sourcecity);
+                ((MyApplicationData) this.getApplication()).setCity(sourcecity);
                 builder.append(addressStr);
                 builder.append(" ");
             }

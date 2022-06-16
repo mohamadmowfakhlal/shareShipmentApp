@@ -12,7 +12,7 @@ import com.android.volley.Request;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Password extends AppCompatActivity {
+public class PasswordActivity extends AppCompatActivity {
     EditText password;
     EditText repeatedPassword;
     @Override
@@ -32,7 +32,7 @@ public class Password extends AppCompatActivity {
         }else{
             JSONObject js = new JSONObject();
             //phoneNumber should be taken from sign up information
-            String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
+            String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
             js.put("phoneNumber",phoneNumber);
             js.put("active","true");
             js.put("password",passwordValue);

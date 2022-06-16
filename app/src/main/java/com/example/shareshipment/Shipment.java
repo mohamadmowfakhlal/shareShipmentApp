@@ -39,20 +39,6 @@ public class Shipment implements Parcelable {
             this.deadline=deadline;
 
     }
-    public Shipment(String shipmentType, int fee, String weight, String size) {
-        this.shipmentType = shipmentType;
-        this.fee = fee;
-        this.weight = weight;
-        this.size = size;
-    }
-    public Shipment(String shipmentType, int fee, String weight, String size,String deadline,String image) {
-        this.shipmentType = shipmentType;
-        this.fee = fee;
-        this.weight = weight;
-        this.size = size;
-        this.deadline=deadline;
-        this.image = image;
-    }
     @Override
     public int describeContents() {
         return 0;

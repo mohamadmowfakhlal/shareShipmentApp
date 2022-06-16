@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ConfirmRecipientInformation extends AppCompatActivity {
-    JSONObject js;
+    JSONObject task;
     private TextView recipientPhoneNumberTextView;
     private TextView recipientNameTextView;
 
@@ -24,38 +24,36 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent previousIntent = getIntent();
-        //Shipment shipment = getIntent().getParcelableExtra("shipment");
-        Shipment shipment = ((MyApplication) this.getApplication()).getShipment();
-
+        Shipment shipment = ((MyApplicationData) this.getApplication()).getShipment();
         Integer fee = shipment.getFee();
         String shipmentType = shipment.getShipmentType();
         String size = shipment.getSize();
         String weight = shipment.getWeight();
         String deadline = shipment.getDeadline();
-        String recipientPhoneNumber = ((MyApplication) this.getApplication()).getRecipientPhoneNumber();
-        String notes = ((MyApplication) this.getApplication()).getNotes();
-        String productImage = ((MyApplication) this.getApplication()).getProductImage();
-        js = new JSONObject();
+        String recipientPhoneNumber = ((MyApplicationData) this.getApplication()).getRecipientPhoneNumber();
+        String notes = ((MyApplicationData) this.getApplication()).getNotes();
+        String productImage = ((MyApplicationData) this.getApplication()).getProductImage();
+        task = new JSONObject();
         try {
-            js.put("fee",fee);
-            js.put("shipmentType",shipmentType);
-            js.put("size",size);
-            js.put("weight",weight);
-            js.put("notes",notes);
-            js.put("deadline",deadline);
-            js.put("status","sent");
-            js.put("image",productImage);
+            task.put("fee",fee);
+            task.put("shipmentType",shipmentType);
+            task.put("size",size);
+            task.put("weight",weight);
+            task.put("notes",notes);
+            task.put("deadline",deadline);
+            task.put("status","sent");
+            task.put("image",productImage);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
-            js.put("sentDate",formatter.format(date));
+            task.put("sentDate",formatter.format(date));
             JSONObject sender = new JSONObject();
             //sender phone number is taken from login
-            String phoneNumber = ((MyApplication) this.getApplication()).getPhoneNumber();
+            String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
             sender.put("phoneNumber",phoneNumber);
-            js.put("sender",sender);
+            task.put("sender",sender);
             JSONObject receiver = new JSONObject();
             receiver.put("phoneNumber",recipientPhoneNumber);
-            js.put("receiver",receiver);
+            task.put("receiver",receiver);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -70,6 +68,6 @@ public class ConfirmRecipientInformation extends AppCompatActivity {
 
     public void announceShipment(View view){
         String resource = "/shipments";
-        CommonParams.jsonRequestSignIn(js,resource,Request.Method.POST,getApplicationContext(),CompleteWindow.class);
+        CommonParams.jsonRequestSignIn(task,resource,Request.Method.POST,getApplicationContext(),CompleteWindow.class);
     }
 }

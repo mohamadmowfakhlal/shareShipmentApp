@@ -10,7 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import com.android.volley.Request;
 
-public class SignUp extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     EditText fullName;
     EditText phoneNumber;
     EditText city;
@@ -38,9 +38,9 @@ public class SignUp extends AppCompatActivity {
             String full_Name = fullName.getText().toString();
             String phone_number = phoneNumber.getText().toString();
             String city_ = city.getText().toString();
-            ((MyApplication) this.getApplication()).setCity(city_);
-            ((MyApplication) this.getApplication()).setFullName(full_Name);
-            ((MyApplication) this.getApplication()).setPhoneNumber(phone_number);
+            ((MyApplicationData) this.getApplication()).setCity(city_);
+            ((MyApplicationData) this.getApplication()).setFullName(full_Name);
+            ((MyApplicationData) this.getApplication()).setPhoneNumber(phone_number);
             String postNumber_ = postNumber.getText().toString();
             String streetName_ = streetName.getText().toString();
             String houseNumber_ = houseNumber.getText().toString();

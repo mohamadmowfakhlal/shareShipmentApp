@@ -2,7 +2,7 @@ package com.example.shareshipment;
 
 import android.app.Application;
 
-public class MyApplication extends Application {
+public class MyApplicationData extends Application {
 
     private String fullName;
     private String phoneNumber;

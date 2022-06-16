@@ -35,7 +35,7 @@ public class DeliverShipment extends AppCompatActivity  {
         destinationCity = (EditText) findViewById(R.id.destinationCity);
 
         // source city is taken from login
-        currentLocation = ((MyApplication) this.getApplication()).getCity();
+        currentLocation = ((MyApplicationData) this.getApplication()).getCity();
         //Thread.sleep(10000);
         //show the busy sign
         String resource;
@@ -44,7 +44,7 @@ public class DeliverShipment extends AppCompatActivity  {
              resource = "/shipments/search/?sourceCity="+ currentLocation + "&destinationCity="+destinationCity.getText().toString();
         else
             resource = "/shipments/search/?sourceCity="+ selectedLocation + "&destinationCity="+destinationCity.getText().toString();
-        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(),AvailableShipments.class,(MyApplication) this.getApplication());
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), AvailableTasks.class,(MyApplicationData) this.getApplication());
     }
 
 
