@@ -21,6 +21,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.NetworkResponse;
@@ -73,6 +77,7 @@ public class CommonParams {
                                         myToast.show();
                                     }else {
                                         // ((MyApplication) Activity.getApplication()).setCity();
+
                                         Intent intent = new Intent(context, className);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                                         context.startActivity(intent);
@@ -150,7 +155,108 @@ public class CommonParams {
         };
         queue.add(jsonObjReq);
     }
+    public  static  void jsonRequestSignIn(JSONObject js, final String resource, int method, final Context context, final Class className,final FragmentManager fm){
+        RequestQueue queue =  Volley.newRequestQueue(context);
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, serverURL+resource, js,new Response.Listener<JSONObject>() {
+            Toast myToast;
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if(response==null) {
+                        Fragment fragment = new ActivationCodeFragment();
 
+                        FragmentTransaction transaction = fm.beginTransaction();
+                        transaction.replace(R.id.my_nav_host_fragment, fragment);
+                        transaction.commit();
+                    }else{
+                        if(resource.equals("/users/login")){
+                            if(!response.getBoolean("loginSuccess")) {
+                                myToast = Toast.makeText(context,"failed  !", Toast.LENGTH_SHORT);
+                                myToast.show();
+                            }else {
+                                // ((MyApplication) Activity.getApplication()).setCity();
+                                Fragment fragment = new ActivationCodeFragment();
+
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                transaction.replace(R.id.FirstFragment, fragment);
+                                transaction.commit();
+                                //Intent intent = new Intent(context, className);
+                                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                                //context.startActivity(intent);
+                            }
+                        }else if(resource.equals("/users/")){
+                            Intent intent = new Intent(context,className);
+                            intent.putExtra("recipientName",response.getString("userName"));
+                            //intent.putExtra("recipientPhoneNumber",recipientPhoneNumber);
+                            //intent.putExtra("notes",notes);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+
+                            context.startActivity(intent);
+                        }
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("error"+error);
+                Log.d("JsonObject Error ",error.toString());
+
+                if (error instanceof NetworkError) {
+                } else if (error instanceof ServerError) {
+                } else if (error instanceof AuthFailureError) {
+                } else if (error instanceof ParseError) {
+                } else if (error instanceof NoConnectionError) {
+                } else if (error instanceof TimeoutError) {
+                    Toast.makeText(context,
+                            "Oops. Timeout error!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        }) {
+
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+
+
+                try {
+                    String json = new String(
+                            response.data,
+                            "UTF-8"
+                    );
+
+                    if (json.length() == 0) {
+                        return Response.success(
+                                null,
+                                HttpHeaderParser.parseCacheHeaders(response)
+                        );
+                    }
+                    else {
+                        return super.parseNetworkResponse(response);
+                    }
+                }
+                catch (UnsupportedEncodingException e) {
+                    return Response.error(new ParseError(e));
+                }
+
+
+            }
+        };
+        queue.add(jsonObjReq);
+    }
     public  static  void jsonRequestSignIn(JSONObject js, final String resource, int method, final Context context, final Class className,final String res){
         RequestQueue queue =  Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, serverURL+resource+res, js,new Response.Listener<JSONObject>() {

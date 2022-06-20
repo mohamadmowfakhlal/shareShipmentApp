@@ -10,14 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class UserNameFrame extends Fragment {
+public class ActivationCodeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.username_layout,container,false);
+        View view = inflater.inflate(R.layout.activity_confirm_activition_code,container,false);
         return view;
     }
 }

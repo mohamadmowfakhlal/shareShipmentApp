@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInActivity">
+    tools:context=".StartingActivity">
 
     <TextView
         android:id="@+id/textView27"
@@ -75,4 +75,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.083"
         app:srcCompat="@drawable/postman" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="91dp"
+        android:layout_height="40dp"
+        android:onClick="signUp"
+        android:text="Sign up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.827" />
 </androidx.constraintlayout.widget.ConstraintLayout>

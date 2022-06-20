@@ -28,7 +28,7 @@ public class MainFunctionality extends AppCompatActivity {
     }
 
     public void deliverShipmentForOther(View view){
-        Intent intent = new Intent(this,DeliverShipment.class);
+        Intent intent = new Intent(this, StartTask.class);
         startActivity(intent);
     }
     public void trackActiveShipment(View view) {

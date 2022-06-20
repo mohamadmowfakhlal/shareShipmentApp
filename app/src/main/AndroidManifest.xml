@@ -18,30 +18,31 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AnnouncedTasks"></activity>
         <activity android:name=".AssignTask" />
-        <activity android:name=".SignInActivity" />
         <activity android:name=".AvailableTasks" />
-        <activity android:name=".DeliverShipment" />
+        <activity android:name=".StartTask" />
+        <activity android:name=".MainFunctionality" />
+        <!-- combine on one activity -->
         <activity android:name=".CompleteWindow" />
         <activity android:name=".ConfirmRecipientInformation" />
         <activity android:name=".ChooseRecipient" />
         <activity android:name=".AnnounceTask" />
-        <activity android:name=".MainFunctionality" />
-        <activity android:name=".PasswordActivity" />
-        <activity android:name=".ActivationCode" />
-        <activity android:name=".SignUpActivity" />
-        <activity
-            android:name=".StartingActivity"
-            android:parentActivityName=".MainActivity">
 
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
+        <!-- combine on one activity
+        <activity android:name=".ActivationCode" />
+        <activity android:name=".PasswordActivity" />-->
+
+
+        <activity android:name=".EnrollmentActivity" />
+        <!--<activity android:name=".StartingActivity" android:parentActivityName=".LaunchActivity">
+           The meta-data tag is required if you support API level 15 and lower
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity android:name=".MainActivity">
+                android:value=".LaunchActivity" />
+        </activity>-->
+
+        <activity android:name=".StartingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

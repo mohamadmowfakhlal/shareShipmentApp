@@ -1,30 +1,37 @@
 package com.example.shareshipment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.android.volley.Request;
 
-public class SignUpActivity extends AppCompatActivity {
+public class EnrollmentActivity extends AppCompatActivity {
     EditText fullName;
     EditText phoneNumber;
     EditText city;
     EditText postNumber;
     EditText streetName;
     EditText houseNumber;
-
+    EditText password;
+    EditText repeatedPassword;
+    FragmentManager fm = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
     }
-    public void signUp(View view) {
+    public void registerUser(View view) {
         fullName =  findViewById(R.id.fullName);
         phoneNumber =  findViewById(R.id.phone);
         city =  findViewById(R.id.city);
@@ -55,9 +62,36 @@ public class SignUpActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         String resource = "/users";
-        CommonParams.jsonRequestSignIn(user,resource,Request.Method.POST,getApplicationContext(), ActivationCode.class);
+        CommonParams.jsonRequestSignIn(user,resource,Request.Method.POST,getApplicationContext(),null,fm);
 
     }
+    public void confirm(View view) throws JSONException {
+        password = findViewById(R.id.password);
+        String passwordValue = password.getText().toString();
+        repeatedPassword = findViewById(R.id.repeatedPasswordValue);
+        String repeatedPasswordValue = repeatedPassword.getText().toString();
+        if(!passwordValue.equals(repeatedPasswordValue) ){
+            Toast.makeText(getApplicationContext(),
+                    "The password is not identical!",
+                    Toast.LENGTH_LONG).show();
+        }else{
+            JSONObject js = new JSONObject();
+            //phoneNumber should be taken from sign up information
+            String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
+            js.put("phoneNumber",phoneNumber);
+            js.put("active","true");
+            js.put("password",passwordValue);
+            String resource = "/users/";
+            CommonParams.jsonRequestSignIn(js,resource, Request.Method.PUT,getApplicationContext(),MainFunctionality.class);
+        }
 
 
+    }
+    public void verifyCode(View view) {
+        Fragment fragment = new PasswordFrame();
+
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.my_nav_host_fragment, fragment);
+        transaction.commit();
+    }
 }

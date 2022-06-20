@@ -13,7 +13,7 @@ import com.android.volley.Request;
 import org.json.JSONArray;
 
 
-public class DeliverShipment extends AppCompatActivity  {
+public class StartTask extends AppCompatActivity  {
     EditText destinationCity;
     Spinner sourceCitySpinner;
     String currentLocation;
@@ -34,9 +34,8 @@ public class DeliverShipment extends AppCompatActivity  {
     public void searchForTasks(View view) {
         destinationCity = (EditText) findViewById(R.id.destinationCity);
 
-        // source city is taken from login
+        // source city is taken from GPS
         currentLocation = ((MyApplicationData) this.getApplication()).getCity();
-        //Thread.sleep(10000);
         //show the busy sign
         String resource;
         String selectedLocation= sourceCitySpinner.getSelectedItem().toString();

@@ -18,7 +18,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,11 +34,13 @@ public class StartingActivity extends AppCompatActivity implements LocationListe
     LocationManager locationManager;
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
     final static int PERMISSON_ALL=1;
-    String sourcecity;
+    String pickupCity;
+    EditText phoneNumber;
+    EditText password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_starting);
+        setContentView(R.layout.activity_enrollment);
         locationManager =  (LocationManager) getSystemService(LOCATION_SERVICE);
         if(Build.VERSION.SDK_INT>=23){
             requestPermissions(PERMISSIONS,PERMISSON_ALL);
@@ -60,14 +68,23 @@ public class StartingActivity extends AppCompatActivity implements LocationListe
 
     }
     public void signUp(View view) {
-        Intent intent = new Intent(this, SignUpActivity.class);
+        Intent intent = new Intent(this, EnrollmentActivity.class);
         startActivity(intent);
 
   }
 
-    public void signIn(View view){
-        Intent intent = new Intent(this, SignInActivity.class);
-        startActivity(intent);
+
+    public void signIn(View view) throws JSONException {
+        //ToDo API verification for phone number and password
+
+        phoneNumber = findViewById(R.id.PhoneNumber);
+        password  = findViewById(R.id.password);
+        JSONObject login = new JSONObject();
+        login.put("phoneNumber",phoneNumber.getText().toString());
+        login.put("password",password.getText().toString());
+        String resource = "/users/login";
+        CommonParams.jsonRequestSignIn(login,resource, Request.Method.POST,getApplicationContext(),MainFunctionality.class);
+        ((MyApplicationData) this.getApplication()).setPhoneNumber(phoneNumber.getText().toString());
     }
     @Override
     public void onLocationChanged(@NonNull Location location) {
@@ -82,8 +99,8 @@ public class StartingActivity extends AppCompatActivity implements LocationListe
 
             for (int i=0; i<=maxLines; i++) {
                 String addressStr = address.get(0).getAddressLine(i);
-                sourcecity = address.get(0).getLocality();
-                ((MyApplicationData) this.getApplication()).setCity(sourcecity);
+                pickupCity = address.get(0).getLocality();
+                ((MyApplicationData) this.getApplication()).setCity(pickupCity);
                 builder.append(addressStr);
                 builder.append(" ");
             }

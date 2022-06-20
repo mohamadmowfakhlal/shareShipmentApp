@@ -49,14 +49,28 @@
 
     <ImageView
         android:id="@+id/itemPhoto"
-        android:layout_width="121dp"
-        android:layout_height="69dp"
+        android:layout_width="156dp"
+        android:layout_height="108dp"
+        android:background="@drawable/backround"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.07" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="209dp"
+        android:layout_height="114dp"
+        android:text="upload a photo that show the content of your item"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.061" />
 
     <TextView
         android:id="@+id/textView13"
@@ -192,6 +206,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.546" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

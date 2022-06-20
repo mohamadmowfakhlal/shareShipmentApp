@@ -24,6 +24,8 @@ public class AvailableTaskAdapter extends BaseAdapter {
    private ArrayList<JSONObject> arrayList;
    private String sourceRequest="";
    private String deliveryManPhoneNumber;
+   Bitmap image;
+   boolean resized = false;
    private TextView shipmentId,
            shipmentType,
            shipmentFee,
@@ -34,6 +36,8 @@ public class AvailableTaskAdapter extends BaseAdapter {
            pickupAddress,destinationAddress,deadline;
    private Button assign,deliver,cancel,receive;
    private ImageView productIamge;
+   private int imageHeight;
+   private int imageWidth;
    public AvailableTaskAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String deliveryMan, String sourceRequest) {
       this.context = context;
       this.arrayList = arrayList;
@@ -59,7 +63,7 @@ public class AvailableTaskAdapter extends BaseAdapter {
       return position;
    }
    @Override
-   public View getView(final int position, View convertView, ViewGroup parent) {
+   public View getView(final int position, View convertView, final ViewGroup parent) {
       convertView = LayoutInflater.from(context).inflate(R.layout.row, parent, false);
       shipmentId = convertView.findViewById(R.id.shipmentId);
       shipmentType = convertView.findViewById(R.id.ShipmentType);
@@ -95,7 +99,25 @@ public class AvailableTaskAdapter extends BaseAdapter {
             CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
          }
       });
+      productIamge.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            if(!resized){
+               imageHeight =  productIamge.getLayoutParams().height;
+               imageWidth = productIamge.getLayoutParams().width;
+               productIamge.getLayoutParams().height = parent.getHeight();
+               productIamge.getLayoutParams().width = parent.getWidth();
+               productIamge.requestLayout();
+               resized = true;
+            }else{
+               productIamge.getLayoutParams().height = imageHeight;
+               productIamge.getLayoutParams().width = imageWidth;
+               productIamge.requestLayout();
+               resized = false;
+            }
 
+         }
+      });
 
       deliver.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -192,7 +214,7 @@ public class AvailableTaskAdapter extends BaseAdapter {
       JSONObject receiverAddress = receiver.getJSONObject("address");
       destinationAddress.setText(receiverAddress.getString("city")+receiverAddress.getString("streetName")+senderAddress.getString("streetName")+senderAddress.getString("houseNumber"));
       byte[] imageBytes = Base64.decode(arrayList.get(position).getString("image"),Base64.DEFAULT);
-      Bitmap image = BitmapImage.createBitmapFromByteArray(imageBytes);
+      image = BitmapImage.createBitmapFromByteArray(imageBytes);
       productIamge.setImageBitmap(image);
          if(arrayList.get(position).getString("size") != "null"){
             shipmentSize.setText(arrayList.get(position).getString("size"));
