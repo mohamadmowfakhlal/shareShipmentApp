@@ -22,8 +22,6 @@ public class Tasks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announced_shipments);
-        Intent intent = getIntent();
-        //String jsonArray = intent.getStringExtra("shipments");
         String jsonArray = ((MyApplicationData) getApplication()).getShipments();
         try {
             JSONArray tasks = new JSONArray(jsonArray);
@@ -37,7 +35,8 @@ public class Tasks extends AppCompatActivity {
             e.printStackTrace();
         }
         listViewAnnounceTasks = findViewById(R.id.announceShipments);
-        adapter = new TasksAdapter(this, tasks, listViewAnnounceTasks,((MyApplicationData) this.getApplication()).getPhoneNumber(),"AnnouncedShipments");
+        String type = ((MyApplicationData) this.getApplication()).getType();
+        adapter = new TasksAdapter(this, tasks, listViewAnnounceTasks,((MyApplicationData) this.getApplication()).getPhoneNumber(),type);
         listViewAnnounceTasks.setAdapter(adapter);
     }
 }

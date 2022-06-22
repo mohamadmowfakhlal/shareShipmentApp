@@ -48,7 +48,6 @@ public class TasksAdapter extends BaseAdapter {
       this.context = context;
       this.arrayList = arrayList;
       this.deliveryManPhoneNumber = deliveryMan;
-      this.sourceRequest = sourceRequest;
    }
    @Override
    public int getCount() {
@@ -170,32 +169,43 @@ public class TasksAdapter extends BaseAdapter {
          }
       });
       try {
-         if(arrayList.get(position).getString("status").equals("assigned") ){
-            assign.setVisibility(View.GONE);
-            receive.setVisibility(View.GONE);
+
+         switch (arrayList.get(position).getString("status"))
+         {
+            case "assigned":{
+               assign.setVisibility(View.GONE);
+               receive.setVisibility(View.GONE);
+               break;
+            }
+            case "sent":{
+               if(sourceRequest.equals("searchTasks")){
+                  receive.setVisibility(View.GONE);
+                  deliver.setVisibility(View.GONE);
+               }else{
+                  receive.setVisibility(View.GONE);
+                  deliver.setVisibility(View.GONE);
+                  assign.setVisibility(View.GONE);
+               }
+               break;
+            }
+            case "delivered": {
+               deliver.setVisibility(View.GONE);
+               assign.setVisibility(View.GONE);
+               cancel.setVisibility(View.GONE);
+               break;
+
+            }
+            case "canceled":
+            case "received": {
+               receive.setVisibility(View.GONE);
+               deliver.setVisibility(View.GONE);
+               assign.setVisibility(View.GONE);
+               cancel.setVisibility(View.GONE);
+               break;
+
+            }
          }
-         if(arrayList.get(position).getString("status").equals("sent") && sourceRequest.equals("AnnouncedShipments")){
-            receive.setVisibility(View.GONE);
-            deliver.setVisibility(View.GONE);
-            assign.setVisibility(View.GONE);
-         }
-         if(arrayList.get(position).getString("status").equals("sent") && sourceRequest.equals("DeliverShipment")){
-            receive.setVisibility(View.GONE);
-            cancel.setVisibility(View.GONE);
-            deliver.setVisibility(View.GONE);
-         }
-         if(arrayList.get(position).getString("status").equals("delivered") ){
-            //receive.setVisibility(View.GONE);
-            deliver.setVisibility(View.GONE);
-            assign.setVisibility(View.GONE);
-            cancel.setVisibility(View.GONE);
-         }
-         if(arrayList.get(position).getString("status").equals("canceled") || arrayList.get(position).getString("status").equals("received")){
-            receive.setVisibility(View.GONE);
-            deliver.setVisibility(View.GONE);
-            assign.setVisibility(View.GONE);
-            cancel.setVisibility(View.GONE);
-         }
+
       } catch (JSONException e) {
          e.printStackTrace();
       }

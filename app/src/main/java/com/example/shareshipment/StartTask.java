@@ -39,6 +39,7 @@ public class StartTask extends AppCompatActivity  {
         //show the busy sign
         String resource;
         String selectedLocation= sourceCitySpinner.getSelectedItem().toString();
+        ((MyApplicationData) this.getApplication()).setType("searchTasks");
         if(selectedLocation.equals("current Location"))
              resource = "/shipments/search/?sourceCity="+ currentLocation + "&destinationCity="+destinationCity.getText().toString();
         else

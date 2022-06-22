@@ -12,6 +12,7 @@ public class MyApplicationData extends Application {
     private String shipments;
     private String recipientPhoneNumber;
     private String notes;
+    private String type;
     public String getFullName() {
         return fullName;
     }
@@ -74,5 +75,13 @@ public class MyApplicationData extends Application {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

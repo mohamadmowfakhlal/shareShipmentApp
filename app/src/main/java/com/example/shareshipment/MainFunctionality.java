@@ -21,9 +21,11 @@ public class MainFunctionality extends AppCompatActivity {
         Intent intent = new Intent(this, AnnounceTask.class);
         startActivity(intent);
     }
+
     public void assignShipment(View view) {
         String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
         String resource = "/shipments/?status=assigned&userType=carrier&phoneNumber="+phoneNumber;
+        ((MyApplicationData) this.getApplication()).setType("AssignShipment");
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }
 
@@ -31,14 +33,19 @@ public class MainFunctionality extends AppCompatActivity {
         Intent intent = new Intent(this, StartTask.class);
         startActivity(intent);
     }
+
     public void trackActiveShipment(View view) {
         String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
+        ((MyApplicationData) this.getApplication()).setType("AnnouncedShipments");
+
         String resource = "/shipments/?phoneNumber="+phoneNumber+"&userType=sender";
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }
 
     public void trackExpectedShipment(View view) {
         String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
+        ((MyApplicationData) this.getApplication()).setType("AnnouncedShipments");
+
         String resource = "/shipments/?phoneNumber="+phoneNumber+"&userType=receiver";
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }

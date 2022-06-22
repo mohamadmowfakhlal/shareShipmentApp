@@ -43,6 +43,7 @@ public class AnnounceTask extends AppCompatActivity {
     private String productImage;
     EditText recipientPhoneNumber ;
     EditText notes;
+    Shipment shipment;
     FragmentManager fm = getSupportFragmentManager();
 
     @Override
@@ -119,13 +120,20 @@ public class AnnounceTask extends AppCompatActivity {
             weightValue= weight.getSelectedItem().toString();
         if(size.getVisibility() != View.GONE)
             sizeValue = size.getSelectedItem().toString();
-        Shipment shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue,deadline.getSelectedItem().toString());
-        //Intent intent = new Intent(this, SelectReceiverFragment.class);
-        //intent.putExtra("shipment", shipment);
-        ((MyApplicationData) this.getApplication()).setShipment(shipment);
-        //startActivity(intent);
+        shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue,deadline.getSelectedItem().toString());
+        task = new JSONObject();
+        try {
+            task.put("fee",Integer.parseInt(fee.getText().toString()));
+            task.put("shipmentType",shipmentType);
+            task.put("size",sizeValue);
+            task.put("weight",weightValue);
+            task.put("deadline",deadline.getSelectedItem().toString());
+            task.put("status","sent");
+            task.put("image",productImage);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         Fragment fragment = new SelectReceiverFragment();
-
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.my_nav_host_fragment_create_task, fragment);
         transaction.commit();
@@ -156,24 +164,9 @@ public class AnnounceTask extends AppCompatActivity {
     }
 
     public void announceShipment(View view){
-        Shipment shipment = ((MyApplicationData) this.getApplication()).getShipment();
-        Integer fee = shipment.getFee();
-        String shipmentType = shipment.getShipmentType();
-        String size = shipment.getSize();
-        String weight = shipment.getWeight();
-        String deadline = shipment.getDeadline();
-        String notes = ((MyApplicationData) this.getApplication()).getNotes();
-        String productImage = ((MyApplicationData) this.getApplication()).getProductImage();
-        task = new JSONObject();
         try {
-            task.put("fee",fee);
-            task.put("shipmentType",shipmentType);
-            task.put("size",size);
-            task.put("weight",weight);
+
             task.put("notes",notes);
-            task.put("deadline",deadline);
-            task.put("status","sent");
-            task.put("image",productImage);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
             task.put("sentDate",formatter.format(date));
@@ -197,6 +190,7 @@ public class AnnounceTask extends AppCompatActivity {
     public void searchSentShipment(View view) {
         String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
         String resource = "/shipments/?status=sent&userType=sender&phoneNumber="+phoneNumber;
+        ((MyApplicationData) this.getApplication()).setType("AnnouncedShipments");
         CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }
 }

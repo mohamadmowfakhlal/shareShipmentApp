@@ -317,10 +317,8 @@ public class CommonParams {
             @Override
             public void onResponse(JSONArray  response) {
                 if(response!=null) {
-                        Intent intent = new Intent(context, className);
+                    Intent intent = new Intent(context, className);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-
-                    //intent.putExtra("shipments",response.toString());
                     myApplication.setShipments(response.toString());
                         context.startActivity(intent);
                 }
