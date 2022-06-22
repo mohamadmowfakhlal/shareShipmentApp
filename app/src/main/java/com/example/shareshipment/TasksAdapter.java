@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-public class AvailableTaskAdapter extends BaseAdapter {
+public class TasksAdapter extends BaseAdapter {
    private Context context;
    private ArrayList<JSONObject> arrayList;
    private String sourceRequest="";
@@ -38,13 +38,13 @@ public class AvailableTaskAdapter extends BaseAdapter {
    private ImageView productIamge;
    private int imageHeight;
    private int imageWidth;
-   public AvailableTaskAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String deliveryMan, String sourceRequest) {
+   public TasksAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String deliveryMan, String sourceRequest) {
       this.context = context;
       this.arrayList = arrayList;
       this.deliveryManPhoneNumber = deliveryMan;
       this.sourceRequest = sourceRequest;
    }
-   public AvailableTaskAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String deliveryMan) {
+   public TasksAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String deliveryMan) {
       this.context = context;
       this.arrayList = arrayList;
       this.deliveryManPhoneNumber = deliveryMan;

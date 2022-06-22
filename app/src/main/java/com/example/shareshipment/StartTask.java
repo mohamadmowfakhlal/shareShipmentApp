@@ -43,7 +43,7 @@ public class StartTask extends AppCompatActivity  {
              resource = "/shipments/search/?sourceCity="+ currentLocation + "&destinationCity="+destinationCity.getText().toString();
         else
             resource = "/shipments/search/?sourceCity="+ selectedLocation + "&destinationCity="+destinationCity.getText().toString();
-        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), AvailableTasks.class,(MyApplicationData) this.getApplication());
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }
 
 

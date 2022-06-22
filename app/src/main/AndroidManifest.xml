@@ -16,11 +16,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AnnouncedTasks"></activity>
-        <activity android:name=".AvailableTasks" />
+        <activity android:name=".Tasks"></activity>
         <activity android:name=".StartTask" />
         <activity android:name=".MainFunctionality" />
-        <activity android:name=".AssignTask" />
         <!-- combine on one activity -->
         <activity android:name=".CompleteWindow" />
 

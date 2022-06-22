@@ -24,7 +24,7 @@ public class MainFunctionality extends AppCompatActivity {
     public void assignShipment(View view) {
         String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
         String resource = "/shipments/?status=assigned&userType=carrier&phoneNumber="+phoneNumber;
-        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), AssignTask.class,(MyApplicationData) this.getApplication());
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }
 
     public void deliverShipmentForOther(View view){
@@ -34,12 +34,12 @@ public class MainFunctionality extends AppCompatActivity {
     public void trackActiveShipment(View view) {
         String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
         String resource = "/shipments/?phoneNumber="+phoneNumber+"&userType=sender";
-        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), AnnouncedTasks.class,(MyApplicationData) this.getApplication());
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }
 
     public void trackExpectedShipment(View view) {
         String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
         String resource = "/shipments/?phoneNumber="+phoneNumber+"&userType=receiver";
-        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), AnnouncedTasks.class,(MyApplicationData) this.getApplication());
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }
 }

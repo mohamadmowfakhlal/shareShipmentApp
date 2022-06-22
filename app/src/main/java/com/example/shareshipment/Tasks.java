@@ -12,10 +12,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AnnouncedTasks extends AppCompatActivity {
+public class Tasks extends AppCompatActivity {
 
     ListView listViewAnnounceTasks;
-    AvailableTaskAdapter adapter;
+    TasksAdapter adapter;
     ArrayList<JSONObject> tasks = new ArrayList<>();
 
     @Override
@@ -26,10 +26,10 @@ public class AnnouncedTasks extends AppCompatActivity {
         //String jsonArray = intent.getStringExtra("shipments");
         String jsonArray = ((MyApplicationData) getApplication()).getShipments();
         try {
-            JSONArray receivedTasks = new JSONArray(jsonArray);
-            if (receivedTasks != null) {
-                for (int task=0;task<receivedTasks.length();task++){
-                    tasks.add(receivedTasks.getJSONObject(task));
+            JSONArray tasks = new JSONArray(jsonArray);
+            if (tasks != null) {
+                for (int task=0;task<tasks.length();task++){
+                    this.tasks.add(tasks.getJSONObject(task));
                 }
             }
             //System.out.println(array.toString(2));
@@ -37,7 +37,7 @@ public class AnnouncedTasks extends AppCompatActivity {
             e.printStackTrace();
         }
         listViewAnnounceTasks = findViewById(R.id.announceShipments);
-        adapter = new AvailableTaskAdapter(this, tasks, listViewAnnounceTasks,((MyApplicationData) this.getApplication()).getPhoneNumber(),"AnnouncedShipments");
+        adapter = new TasksAdapter(this, tasks, listViewAnnounceTasks,((MyApplicationData) this.getApplication()).getPhoneNumber(),"AnnouncedShipments");
         listViewAnnounceTasks.setAdapter(adapter);
     }
 }

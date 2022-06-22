@@ -197,6 +197,6 @@ public class AnnounceTask extends AppCompatActivity {
     public void searchSentShipment(View view) {
         String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
         String resource = "/shipments/?status=sent&userType=sender&phoneNumber="+phoneNumber;
-        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), AnnouncedTasks.class,(MyApplicationData) this.getApplication());
+        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), Tasks.class,(MyApplicationData) this.getApplication());
     }
 }
