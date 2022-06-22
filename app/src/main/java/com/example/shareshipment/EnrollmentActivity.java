@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -62,7 +61,7 @@ public class EnrollmentActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         String resource = "/users";
-        CommonParams.jsonRequestSignIn(user,resource,Request.Method.POST,getApplicationContext(),null,fm);
+        CommonParams.JSONRequest(user,resource,Request.Method.POST,getApplicationContext(),fm);
 
     }
     public void confirm(View view) throws JSONException {
@@ -82,7 +81,7 @@ public class EnrollmentActivity extends AppCompatActivity {
             js.put("active","true");
             js.put("password",passwordValue);
             String resource = "/users/";
-            CommonParams.jsonRequestSignIn(js,resource, Request.Method.PUT,getApplicationContext(),MainFunctionality.class);
+            CommonParams.JSONRequest(js,resource, Request.Method.PUT,getApplicationContext(),MainFunctionality.class);
         }
 
 

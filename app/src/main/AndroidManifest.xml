@@ -17,22 +17,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AnnouncedTasks"></activity>
-        <activity android:name=".AssignTask" />
         <activity android:name=".AvailableTasks" />
         <activity android:name=".StartTask" />
         <activity android:name=".MainFunctionality" />
+        <activity android:name=".AssignTask" />
         <!-- combine on one activity -->
         <activity android:name=".CompleteWindow" />
-        <activity android:name=".ConfirmRecipientInformation" />
-        <activity android:name=".ChooseRecipient" />
-        <activity android:name=".AnnounceTask" />
+
 
         <!-- combine on one activity
         <activity android:name=".ActivationCode" />
+
+
+        <activity android:name=".AnnounceTask" />
         <activity android:name=".PasswordActivity" />-->
 
-
-        <activity android:name=".EnrollmentActivity" />
+        <activity android:name=".EnrollmentActivity"/>
+        <activity android:name=".AnnounceTask" />
         <!--<activity android:name=".StartingActivity" android:parentActivityName=".LaunchActivity">
            The meta-data tag is required if you support API level 15 and lower
             <meta-data

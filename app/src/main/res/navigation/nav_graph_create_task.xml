@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.shareshipment.CreateTaskFragment"
+        tools:layout="@layout/activity_announce_shipment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.shareshipment.SelectReceiverFragment"
+        tools:layout="@layout/activity_recipent">
+    </fragment>
+
+    <fragment
+        android:id="@+id/ThirdFragment"
+        android:name="com.example.shareshipment.ConfirmReceipentInformationFragment"
+
+        tools:layout="@layout/activity_confirm_recipent_information">
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/FourthFragment"
+        android:name="com.example.shareshipment.ConfirmReceipentInformationFragment"
+
+        tools:layout="@layout/activity_confirm_recipent_information">
+
+
+    </fragment>
+</navigation>

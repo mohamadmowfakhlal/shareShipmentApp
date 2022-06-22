@@ -96,7 +96,7 @@ public class AvailableTaskAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.JSONRequest(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
          }
       });
       productIamge.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +133,7 @@ public class AvailableTaskAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.JSONRequest(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
             context.startActivity(intent);
          }
       });
@@ -151,7 +151,7 @@ public class AvailableTaskAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.JSONRequest(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
 
          }
       });
@@ -165,7 +165,7 @@ public class AvailableTaskAdapter extends BaseAdapter {
             } catch (JSONException e) {
                e.printStackTrace();
             }
-            CommonParams.jsonRequestSignIn(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
+            CommonParams.JSONRequest(js,"/shipments", Request.Method.PUT,context,MainFunctionality.class);
 
          }
       });

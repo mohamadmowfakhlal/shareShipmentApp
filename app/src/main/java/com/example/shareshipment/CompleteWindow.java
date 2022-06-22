@@ -16,9 +16,5 @@ public class CompleteWindow extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_window);
     }
-    public void assignShipment(View view) {
-        String phoneNumber = ((MyApplicationData) this.getApplication()).getPhoneNumber();
-        String resource = "/shipments/?status=sent&userType=sender&phoneNumber="+phoneNumber;
-        CommonParams.enhancedJSONArrayRequest(new JSONArray(),resource, Request.Method.GET,getApplicationContext(), AnnouncedTasks.class,(MyApplicationData) this.getApplication());
-    }
+
 }

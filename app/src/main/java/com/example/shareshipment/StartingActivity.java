@@ -83,7 +83,7 @@ public class StartingActivity extends AppCompatActivity implements LocationListe
         login.put("phoneNumber",phoneNumber.getText().toString());
         login.put("password",password.getText().toString());
         String resource = "/users/login";
-        CommonParams.jsonRequestSignIn(login,resource, Request.Method.POST,getApplicationContext(),MainFunctionality.class);
+        CommonParams.JSONRequest(login,resource, Request.Method.POST,getApplicationContext(),MainFunctionality.class);
         ((MyApplicationData) this.getApplication()).setPhoneNumber(phoneNumber.getText().toString());
     }
     @Override

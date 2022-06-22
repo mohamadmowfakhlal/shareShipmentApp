@@ -59,7 +59,7 @@ public class CommonParams {
 
     private static String serverURL = "https://3.73.174.22:4430";
 
-    public  static  void jsonRequestSignIn(JSONObject js, final String resource, int method, final Context context, final Class className){
+    public  static  void JSONRequest(JSONObject js, final String resource, int method, final Context context, final Class className){
         RequestQueue queue =  Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, serverURL+resource, js,new Response.Listener<JSONObject>() {
                     Toast myToast;
@@ -76,8 +76,6 @@ public class CommonParams {
                                         myToast = Toast.makeText(context,"failed  !", Toast.LENGTH_SHORT);
                                         myToast.show();
                                     }else {
-                                        // ((MyApplication) Activity.getApplication()).setCity();
-
                                         Intent intent = new Intent(context, className);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                                         context.startActivity(intent);
@@ -88,7 +86,6 @@ public class CommonParams {
                                     //intent.putExtra("recipientPhoneNumber",recipientPhoneNumber);
                                     //intent.putExtra("notes",notes);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-
                                     context.startActivity(intent);
                                 }
 
@@ -155,50 +152,30 @@ public class CommonParams {
         };
         queue.add(jsonObjReq);
     }
-    public  static  void jsonRequestSignIn(JSONObject js, final String resource, int method, final Context context, final Class className,final FragmentManager fm){
+    public  static  void JSONRequest(JSONObject js, final String resource, int method, final Context context,  final FragmentManager fm){
         RequestQueue queue =  Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, serverURL+resource, js,new Response.Listener<JSONObject>() {
             Toast myToast;
             @Override
             public void onResponse(JSONObject response) {
-                try {
+
+                    Fragment fragment = null;
                     if(response==null) {
-                        Fragment fragment = new ActivationCodeFragment();
+                        if(resource.equals("/shipments")){
+                            fragment  = new CompleteFragment();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            transaction.replace(R.id.my_nav_host_fragment_create_task, fragment);
+                            transaction.commit();
 
-                        FragmentTransaction transaction = fm.beginTransaction();
-                        transaction.replace(R.id.my_nav_host_fragment, fragment);
-                        transaction.commit();
-                    }else{
-                        if(resource.equals("/users/login")){
-                            if(!response.getBoolean("loginSuccess")) {
-                                myToast = Toast.makeText(context,"failed  !", Toast.LENGTH_SHORT);
-                                myToast.show();
-                            }else {
-                                // ((MyApplication) Activity.getApplication()).setCity();
-                                Fragment fragment = new ActivationCodeFragment();
-
-                                FragmentTransaction transaction = fm.beginTransaction();
-                                transaction.replace(R.id.FirstFragment, fragment);
-                                transaction.commit();
-                                //Intent intent = new Intent(context, className);
-                                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                                //context.startActivity(intent);
-                            }
-                        }else if(resource.equals("/users/")){
-                            Intent intent = new Intent(context,className);
-                            intent.putExtra("recipientName",response.getString("userName"));
-                            //intent.putExtra("recipientPhoneNumber",recipientPhoneNumber);
-                            //intent.putExtra("notes",notes);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-
-                            context.startActivity(intent);
+                        }else if(resource.equals("/users")){
+                            fragment = new ActivationCodeFragment();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            transaction.replace(R.id.my_nav_host_fragment, fragment);
+                            transaction.commit();
                         }
 
-                    }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                    }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -257,39 +234,18 @@ public class CommonParams {
         };
         queue.add(jsonObjReq);
     }
-    public  static  void jsonRequestSignIn(JSONObject js, final String resource, int method, final Context context, final Class className,final String res){
+    public  static  void JSONRequest(JSONObject js, final String resource, int method, final Context context, final FragmentManager fm,final String res){
         RequestQueue queue =  Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(method, serverURL+resource+res, js,new Response.Listener<JSONObject>() {
-            Toast myToast;
-            @Override
+           @Override
             public void onResponse(JSONObject response) {
                 try {
-                    if(response==null) {
-                        Intent intent = new Intent(context, className);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                        context.startActivity(intent);
-                    }else{
-                        if(resource.equals("/users/login")){
-                            if(!response.getBoolean("loginSuccess")) {
-                                myToast = Toast.makeText(context,"failed  !", Toast.LENGTH_SHORT);
-                                myToast.show();
-                            }else {
-                                // ((MyApplication) Activity.getApplication()).setCity();
-                                Intent intent = new Intent(context, className);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                                context.startActivity(intent);
-                            }
-                        }else if(resource.equals("/users/")){
-                            Intent intent = new Intent(context,className);
-                            intent.putExtra("recipientName",response.getString("userName"));
-                            //intent.putExtra("recipientPhoneNumber",recipientPhoneNumber);
-                            //intent.putExtra("notes",notes);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                            context.startActivity(intent);
+                    if(response!=null) {
+                            Fragment fragment = new ConfirmReceipentInformationFragment(response.getString("userName"));
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            transaction.replace(R.id.my_nav_host_fragment_create_task, fragment);
+                            transaction.commit();
                         }
-
-                    }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -351,7 +307,6 @@ public class CommonParams {
         };
         queue.add(jsonObjReq);
     }
-
     public static void enhancedJSONArrayRequest(JSONArray js, final String resource, int method, final Context context, final Class className, final MyApplicationData myApplication){
         RequestQueue queue =  Volley.newRequestQueue(context);
 
