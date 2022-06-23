@@ -44,11 +44,7 @@ public class TasksAdapter extends BaseAdapter {
       this.deliveryManPhoneNumber = deliveryMan;
       this.sourceRequest = sourceRequest;
    }
-   public TasksAdapter(Context context, ArrayList<JSONObject> arrayList, ListView listView, String deliveryMan) {
-      this.context = context;
-      this.arrayList = arrayList;
-      this.deliveryManPhoneNumber = deliveryMan;
-   }
+
    @Override
    public int getCount() {
       return arrayList.size();

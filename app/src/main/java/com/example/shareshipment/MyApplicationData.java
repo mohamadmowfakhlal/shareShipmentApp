@@ -8,7 +8,6 @@ public class MyApplicationData extends Application {
     private String phoneNumber;
     private String city;
     private  String productImage;
-    private Shipment shipment;
     private String shipments;
     private String recipientPhoneNumber;
     private String notes;
@@ -43,14 +42,6 @@ public class MyApplicationData extends Application {
 
     public String getProductImage() {
         return productImage;
-    }
-
-    public Shipment getShipment() {
-        return shipment;
-    }
-
-    public void setShipment(Shipment shipment) {
-        this.shipment = shipment;
     }
 
     public String getShipments() {

@@ -16,29 +16,47 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Tasks"></activity>
-        <activity android:name=".StartTask" />
-        <activity android:name=".MainFunctionality" />
-        <!-- combine on one activity -->
-        <activity android:name=".CompleteWindow" />
-
-
-        <!-- combine on one activity
-        <activity android:name=".ActivationCode" />
-
-
-        <activity android:name=".AnnounceTask" />
-        <activity android:name=".PasswordActivity" />-->
-
-        <activity android:name=".EnrollmentActivity"/>
-        <activity android:name=".AnnounceTask" />
         <!--<activity android:name=".StartingActivity" android:parentActivityName=".LaunchActivity">
            The meta-data tag is required if you support API level 15 and lower
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LaunchActivity" />
         </activity>-->
-
+        <activity android:name=".Tasks"
+            android:parentActivityName=".MainFunctionality">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainFunctionality" />
+        </activity>
+        <activity android:name=".AnnounceTask"
+            android:parentActivityName=".MainFunctionality">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainFunctionality" />
+        </activity>
+        <activity android:name=".StartTask"
+            android:parentActivityName=".MainFunctionality">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainFunctionality" />
+        </activity>
+        <activity android:name=".MainFunctionality"
+            android:parentActivityName=".StartingActivity">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StartingActivity" />
+        </activity>
+        <activity android:name=".EnrollmentActivity"
+            android:parentActivityName=".StartingActivity">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StartingActivity" />
+        </activity>
         <activity android:name=".StartingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

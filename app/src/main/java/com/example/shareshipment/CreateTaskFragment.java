@@ -30,6 +30,7 @@ public class CreateTaskFragment extends Fragment implements View.OnClickListener
 
         return view;
     }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // Onclick

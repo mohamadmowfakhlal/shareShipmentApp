@@ -43,7 +43,6 @@ public class AnnounceTask extends AppCompatActivity {
     private String productImage;
     EditText recipientPhoneNumber ;
     EditText notes;
-    Shipment shipment;
     FragmentManager fm = getSupportFragmentManager();
 
     @Override
@@ -84,12 +83,12 @@ public class AnnounceTask extends AppCompatActivity {
         adapterSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         size.setAdapter(adapterSize);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> weightAdapter = ArrayAdapter.createFromResource(this,
                 R.array.weight_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        weightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        weight.setAdapter(adapter);
+        weight.setAdapter(weightAdapter);
         shipmentType = "luggage";
     }
 
@@ -102,7 +101,6 @@ public class AnnounceTask extends AppCompatActivity {
         fee =  findViewById(R.id.fee);
         deadline =  findViewById(R.id.deadline);
         itemPhoto = findViewById(R.id.itemPhoto);
-
         sizeLabel.setVisibility(View.GONE);
         weightLabel.setVisibility(View.GONE);
         size.setVisibility(View.GONE);
@@ -120,7 +118,7 @@ public class AnnounceTask extends AppCompatActivity {
             weightValue= weight.getSelectedItem().toString();
         if(size.getVisibility() != View.GONE)
             sizeValue = size.getSelectedItem().toString();
-        shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue,deadline.getSelectedItem().toString());
+        //shipment = new Shipment(shipmentType,Integer.parseInt(fee.getText().toString()),weightValue,sizeValue,deadline.getSelectedItem().toString());
         task = new JSONObject();
         try {
             task.put("fee",Integer.parseInt(fee.getText().toString()));
