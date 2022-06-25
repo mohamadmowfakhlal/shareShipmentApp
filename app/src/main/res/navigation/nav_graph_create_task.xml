@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.shareshipment.CreateTaskFragment"
-        tools:layout="@layout/activity_announce_shipment">
+        tools:layout="@layout/activity_announce_task_fragment">
     </fragment>
 
     <fragment

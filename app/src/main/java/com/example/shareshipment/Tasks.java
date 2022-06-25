@@ -1,6 +1,5 @@
 package com.example.shareshipment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -34,7 +33,7 @@ public class Tasks extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        listViewAnnounceTasks = findViewById(R.id.announceShipments);
+        listViewAnnounceTasks = findViewById(R.id.Tasks);
         String type = ((MyApplicationData) this.getApplication()).getType();
         adapter = new TasksAdapter(this, tasks, listViewAnnounceTasks,((MyApplicationData) this.getApplication()).getPhoneNumber(),type);
         listViewAnnounceTasks.setAdapter(adapter);

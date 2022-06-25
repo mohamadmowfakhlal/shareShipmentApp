@@ -2,12 +2,8 @@ package com.example.shareshipment;
 
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.io.ByteArrayOutputStream;
-
 public class CreateTaskFragment extends Fragment implements View.OnClickListener{
     private static final int RESULT_LOAD_IMAGE = 1;
     ImageView itemPhoto;
@@ -26,7 +20,7 @@ public class CreateTaskFragment extends Fragment implements View.OnClickListener
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_announce_shipment,container,false);
+        View view = inflater.inflate(R.layout.activity_announce_task_fragment,container,false);
 
         return view;
     }

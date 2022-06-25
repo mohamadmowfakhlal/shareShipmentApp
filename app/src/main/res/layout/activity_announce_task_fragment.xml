@@ -14,10 +14,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.293"
+        app:layout_constraintVertical_bias="0.308"
         tools:ignore="MissingConstraints">
 
         <RadioButton
@@ -49,8 +49,8 @@
 
     <ImageView
         android:id="@+id/itemPhoto"
-        android:layout_width="156dp"
-        android:layout_height="108dp"
+        android:layout_width="160dp"
+        android:layout_height="89dp"
         android:background="@drawable/backround"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,29 +61,29 @@
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="209dp"
-        android:layout_height="114dp"
-        android:text="upload a photo that show the content of your item"
+        android:layout_width="199dp"
+        android:layout_height="74dp"
+        android:text="Upload a photo that shows content of your item"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.094" />
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="49dp"
-        android:layout_height="37dp"
+        android:layout_width="53dp"
+        android:layout_height="24dp"
         android:text="fee"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442" />
+        app:layout_constraintVertical_bias="0.425" />
 
     <TextView
         android:id="@+id/textView14"
@@ -93,10 +93,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212" />
+        app:layout_constraintVertical_bias="0.22" />
 
     <TextView
         android:id="@+id/weightLabel"
@@ -145,16 +145,16 @@
 
     <EditText
         android:id="@+id/fee"
-        android:layout_width="102dp"
-        android:layout_height="54dp"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintHorizontal_bias="0.415"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429" />
+        app:layout_constraintVertical_bias="0.422" />
 
     <TextView
         android:id="@+id/textView17"
@@ -164,11 +164,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.663"
+        app:layout_constraintHorizontal_bias="0.668"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432" />
-
+        app:layout_constraintVertical_bias="0.423" />
 
     <Button
         android:id="@+id/button9"
@@ -188,13 +187,13 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="pickup deadline"
+        android:text="Delivery deadline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintVertical_bias="0.561" />
 
     <Spinner
         android:id="@+id/deadline"
@@ -202,10 +201,10 @@
         android:layout_height="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintVertical_bias="0.567" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

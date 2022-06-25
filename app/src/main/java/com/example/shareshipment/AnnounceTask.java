@@ -62,6 +62,12 @@ public class AnnounceTask extends AppCompatActivity {
         weightLabel.setVisibility(View.GONE);
         size.setVisibility(View.GONE);
         weight.setVisibility(View.GONE);
+        ArrayAdapter<CharSequence> adapterDeadline = ArrayAdapter.createFromResource(this,
+                R.array.deadline_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapterDeadline.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        deadline.setAdapter(adapterDeadline);
         shipmentType ="letter";
 
     }
@@ -89,6 +95,12 @@ public class AnnounceTask extends AppCompatActivity {
         weightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         weight.setAdapter(weightAdapter);
+        ArrayAdapter<CharSequence> adapterDeadline = ArrayAdapter.createFromResource(this,
+                R.array.deadline_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapterDeadline.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        deadline.setAdapter(adapterDeadline);
         shipmentType = "luggage";
     }
 
@@ -105,13 +117,6 @@ public class AnnounceTask extends AppCompatActivity {
         weightLabel.setVisibility(View.GONE);
         size.setVisibility(View.GONE);
         weight.setVisibility(View.GONE);
-        ArrayAdapter<CharSequence> adapterDeadline = ArrayAdapter.createFromResource(this,
-                R.array.deadline_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapterDeadline.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        deadline.setAdapter(adapterDeadline);
-
         String weightValue = null;
         String sizeValue = null;
         if(weight.getVisibility()!= View.GONE)

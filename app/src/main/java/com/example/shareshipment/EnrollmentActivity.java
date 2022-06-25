@@ -64,6 +64,7 @@ public class EnrollmentActivity extends AppCompatActivity {
         CommonParams.JSONRequest(user,resource,Request.Method.POST,getApplicationContext(),fm);
 
     }
+
     public void confirm(View view) throws JSONException {
         password = findViewById(R.id.password);
         String passwordValue = password.getText().toString();
@@ -83,12 +84,10 @@ public class EnrollmentActivity extends AppCompatActivity {
             String resource = "/users/";
             CommonParams.JSONRequest(js,resource, Request.Method.PUT,getApplicationContext(),MainFunctionality.class);
         }
-
-
     }
+
     public void verifyCode(View view) {
         Fragment fragment = new PasswordFrame();
-
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.my_nav_host_fragment, fragment);
         transaction.commit();

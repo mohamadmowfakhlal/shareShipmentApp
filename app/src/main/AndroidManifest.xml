@@ -29,14 +29,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainFunctionality" />
         </activity>
-        <activity android:name=".AnnounceTask"
+
+        <activity android:name=".StartTask"
             android:parentActivityName=".MainFunctionality">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainFunctionality" />
         </activity>
-        <activity android:name=".StartTask"
+        <activity android:name=".AnnounceTask"
             android:parentActivityName=".MainFunctionality">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -63,6 +64,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
